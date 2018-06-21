@@ -1,0 +1,63 @@
+#!/bin/bash
+
+redl="\e[31m"
+red="\e[31;1m"
+grnl="\e[32m"
+grn="\e[32;1m"
+blul="\e[34m"
+blu="\e[34;1m"
+ylwl="\e[33m"
+ylw="\e[33;1m"
+cynl="\e[36m"
+cyn="\e[36;1m"
+prpl="\e[35m"
+prp="\e[35;1m"
+rst="\e[0m"
+reddit="/u/psiil"
+
+# detect
+user=$(whoami)
+shell=$(basename $SHELL)
+artist=$(playerctl -p spotify metadata xesam:artist)
+title=$(playerctl -p spotify metadata xesam:title)
+os() {
+	os=$(source /etc/os-release && echo $ID)
+	export os
+}
+
+wm() {
+	id=$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)
+	id=${id##* }
+	wm=$(xprop -id "$id" -notype -len 100 -f _NET_WM_NAME 8t)
+	wm=${wm/*_NET_WM_NAME = }
+	wm=${wm/\"}
+	wm=${wm/\"*}
+	wm=${wm,,}
+	export wm
+}
+
+color-echo()
+{  # print with colors
+  echo -e " $1 $2 $3 $rst$4 $rst$5"
+}
+
+music-echo()
+{  # print with colors
+  echo -e " $1 $2 $3 $rst$4 $rst$5" $artist - $title
+}
+
+os
+wm
+
+clear && printf '\e[3J'
+echo
+echo
+# shell
+color-echo $red▪$rst $redl▪$rst    $redl' user   '    $user
+color-echo $grn▪$rst $grnl▪$rst    $grnl' distro '    $os
+color-echo $blu▪$rst $blul▪$rst    $blul' wm     '    $wm
+color-echo $cyn▪$rst $cynl▪$rst    $cynl' shell  '    $shell
+music-echo $ylw▪$rst $ylwl▪$rst    $ylwl' music'
+color-echo $prp▪$rst $prpl▪$rst    $prpl' reddit '    $reddit
+echo
+echo

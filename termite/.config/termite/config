@@ -1,0 +1,61 @@
+#========================#
+#    Termite config.     #
+#========================#
+
+[options]
+  allow_bold = true
+  audible_bell = true
+  border_width = 40
+  browser = google-chrome-unstable
+  clickable_url = true
+  cursor_blink = true
+  cursor_shape = ibeam
+  dynamic_title = true
+  filter_unmatched_urls = true
+  font = lucy tewi 9
+  geometry = 475x254
+  scroll_on_keystroke = true
+  scroll_on_output = false
+  scrollback_lines = 10000
+  search_wrap = true
+  urgent_on_bell = true
+  visible_bell = true
+
+  [colors]
+
+  # special
+  foreground  = #fafafa
+  cursor      = #927e71
+  background  = #322825
+
+  # black
+  color0  = #4F555B
+  color8  = #4F555B
+
+  # red
+  color1  = #cc6666
+  color9  = #cc4a4a
+
+  # green
+  color2  = #b5bd68
+  color10 = #90BD39
+
+  # yellow
+  color3  = #f0c674
+  color11 = #F09F41
+
+  # blue
+  color4  = #6A97BE
+  color12 = #2A7ABE
+
+  # magenta
+  color5  = #B581C5
+  color13 = #a763bb
+
+  # cyan
+  color6  = #70BEB3
+  color14 = #18BEA8
+
+  # white
+  color7  = #fafafa
+  color15 = #fafafa

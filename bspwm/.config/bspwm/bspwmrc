@@ -1,0 +1,80 @@
+#! /bin/sh
+xrandr --output LVDS-0 --auto --rotate normal --pos 0x0 --output DP-0 --auto --rotate normal --left-of LVDS-0 --output VGA-0 --right-of LVDS-0 &
+
+## Setup
+chosenSetupFilePath=$(shuf -n1 -e ~/scripts/setups/*)
+#hsetroot -fill ${chosenSetupFilePath}/wallpaper.jpg
+feh --bg-scale --no-fehbg ${chosenSetupFilePath}/wallpaper.jpg
+
+killall -9 sxhkd redshift dropbox dunst compton polybar
+
+getcolors () {
+	FOREGROUND=$(cat ${chosenSetupFilePath}/colors | grep 'foreground:'| awk '{print $NF}')
+	BACKGROUND=$(cat ${chosenSetupFilePath}/colors | grep 'background:'| awk '{print $NF}')
+	BLACK=$(cat ${chosenSetupFilePath}/colors | grep 'color0:'| awk '{print $NF}')
+	RED=$(cat ${chosenSetupFilePath}/colors | grep 'color1:'| awk '{print $NF}')
+	GREEN=$(cat ${chosenSetupFilePath}/colors | grep 'color2:'| awk '{print $NF}')
+	YELLOW=$(cat ${chosenSetupFilePath}/colors | grep 'color3:'| awk '{print $NF}')
+	BLUE=$(cat ${chosenSetupFilePath}/colors | grep 'color4:'| awk '{print $NF}')
+	MAGENTA=$(cat ${chosenSetupFilePath}/colors | grep 'color5:'| awk '{print $NF}')
+	CYAN=$(cat ${chosenSetupFilePath}/colors | grep 'color6:'| awk '{print $NF}')
+	WHITE=$(cat ${chosenSetupFilePath}/colors | grep 'color7:'| awk '{print $NF}')
+  #bspwm settings
+	BORDERNORMAL=$(cat ${chosenSetupFilePath}/colors | grep 'bordernormal:'| awk '{print $NF}')
+	BORDERFOCUSED=$(cat ${chosenSetupFilePath}/colors | grep 'borderfocused:'| awk '{print $NF}')
+	SELECTED=$(cat ${chosenSetupFilePath}/colors | grep 'selected:'| awk '{print $NF}')
+}
+
+
+xrdb ~/.Xresources
+xrdb -merge ${chosenSetupFilePath}/colors
+paintee
+
+# Only use the function above if the cache of paintee couldn't be found
+if [ -e ~/.cache/paintee ]; then
+    . ~/.cache/paintee
+    else
+    getcolors
+fi
+
+
+
+bspc monitor LVDS-0 -d ० ० ० ० ०
+bspc monitor DP-0 -d एक दो तीन चार पांच
+
+bspc config border_width         3
+bspc config window_gap           15
+
+bspc config split_ratio          0.50
+bspc config top_padding          30
+bspc config bottom_padding       10
+bspc config left_padding         10
+bspc config right_padding        10
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+bspc rule -a Atom desktop='^3'
+bspc rule -a discord desktop='^4'
+bspc rule -a spotify desktop='^4'
+bspc rule -a signal desktop='^5'
+#bspc rule -a Termite state=floating
+#bspc rule -a termite state=floating
+bspc rule -a *:crx_gaedmjdfmmahhbjefcbgaolhhanlaolb state=floating
+
+### MOUSE ###
+bspc config focus_follows_pointer true
+
+### COLORS ###
+# Set the colors from script.
+bspc config normal_border_color "$BORDERNORMAL"
+bspc config focused_border_color "$BORDERFOCUSED"
+bspc config presel_feedback_color "$SELECTED"
+
+### SETUP ###
+
+sxhkd &
+redshift -m randr:crtc=LVDS-0 &
+dropbox &
+compton &
+. $HOME/scripts/mouse &
+. $HOME/scripts/bars &

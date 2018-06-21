@@ -1,0 +1,15 @@
+! Fonts
+Xft.hinting: true
+Xft.rgba: rgb
+Xft.antialias: true
+!Xft.dpi: 166
+Xft.dpi: 96
+
+! Font Spacing
+URxvt.letterSpace: 1
+URxvt.lineSpace:   1
+
+! URxvt
+URxvt.scrollBar: false
+!URxvt.font: xft:scientifica:size=9
+URxvt.internalBorder: 18

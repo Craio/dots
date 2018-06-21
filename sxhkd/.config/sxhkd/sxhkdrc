@@ -1,0 +1,127 @@
+#========================#
+# wm independent hotkeys #
+#========================#
+
+# Terminal emulator
+super + Return
+	termite
+
+# Program launcher.
+super + space
+	rofi -terminal termite -show run
+
+# Make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#===============#
+# bspwm hotkeys #
+#===============#
+
+# quit bspwm normally
+super + alt + Escape
+	bspc quit
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# set the window state
+super + {t,shift + t,s,f}
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+# Toogle tiling of window
+super + d
+	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
+	bspc node --state \~$state
+
+# Preselect the splitting area for next window on leaf/parent
+super + ctrl + {Left,Down,Up,Right}
+	bspc node --presel-dir \~{west,south,north,east}
+
+# Cancel preselection
+super + ctrl + space
+	bspc node --presel-dir cancel
+
+#============#
+# focus/swap #
+#============#
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local
+
+# focus the next/previous desktop in the current monitor
+super + {Left,Right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+# rotate tree
+super + r
+	bspc node @/ -R 90
+
+# Make split ratios equal
+super + equal
+	bspc node @/ --equalize
+
+# Make split ratios balanced
+super + minus
+	bspc node @/ --balance
+
+#==============#
+#  Extra stuff #
+#==============#
+
+# Lock the session.
+super + l
+  bash ~/scripts/lock
+
+Print
+	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
+
+#	Mute speaker volume
+XF86Launch1
+	./.config/bspwm/bspwmrc
+
+#	Mute speaker volume
+XF86AudioMute
+	amixer set Master toggle
+
+#	Raise/Lower volume settings
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+	amixer set Master 5%{-,+} unmute
+
+#	Mute microphone
+XF86AudioMicMute
+	amixer set Capture toggle
+
+# song controls
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioPlay
+	playerctl play-pause
+
+XF86AudioNext
+	playerctl next
+
+# Expand/contract bspwm's window gaps.
+super + alt + Up
+	bspc config window_gap {30,60,120,240}
+
+super + alt + Down
+	bspc config window_gap {90,60,30,15}
+
+super + alt + {Left,Right}
+	bspc config window_gap 15

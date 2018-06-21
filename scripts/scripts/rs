@@ -1,0 +1,56 @@
+#!/bin/bash
+echo "Which type of worlds? *Only Option 1 contains f2p worlds*"
+ 
+options=("f2p_all" "p2p_all" "us_west" "us_east" "uk" "german" "aus")
+select opt in "${options[@]}"
+ 
+do
+    case $opt in
+        "f2p_all")
+        worlds=(1 8 16 26 35 81 82 83 84 85 93 94)
+        break
+        ;;
+ 
+        "p2p_all")
+        worlds=(2 3 4 5 6 7 9 10 11 12 13 14 15 17 18 19 20 21 22 23
+            24 25 27 28 29 30 31 32 33 34 36 37 38 39 40 41 42 43 44
+            45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 65
+            66 67 68 69 70 73 74 75 76 77 78 86 87 88 89 90 91 92)
+        break
+        ;;
+ 
+        "us_west")
+        worlds=(6 7 13 15 19 20 23 24 31 32 38 39 40 47 48 55 56 57 
+74 78)
+        break
+        ;;
+ 
+        "us_east")
+        worlds=(5 14 21 22 29 30 37 45 46 53 54 61 62 69 70 77 86)
+        break
+        ;;
+ 
+        "uk")
+        worlds=(2 9 10 17 18 25 33 34 41 42 49 50 58 65 66 73)
+        break
+        ;;
+ 
+        "german")
+        worlds=(3 4 11 12 27 28 36 43 44 51 52 59 60 67 68 75 76)
+        break
+        ;;
+ 
+        "aus")
+        worlds=(87 88 89 90 91 92)
+        break
+        ;;
+ 
+    esac
+done
+ 
+ 
+for world in ${worlds[@]}
+do
+    echo -en "w$world:\t"
+    ping -c 1 "oldschool$world.runescape.com" | grep -oE "time=.*ms" | sed 's/time=//g'
+done

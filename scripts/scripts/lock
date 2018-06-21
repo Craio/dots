@@ -1,0 +1,4 @@
+#!/bin/bash
+source "$HOME/scripts/garden.sh"
+
+i3lock -k -e -B=8 --indpos="x+50:h-50" --timepos="x+150:h-35" --clock --insidecolor="$color4"ff --ringcolor="$color12"ff --line-uses-inside --keyhlcolor="$color6"ff --bshlcolor="$color9"ff --insidevercolor="$color3"ff --ringvercolor="$color11"ff --ringwrongcolor="$color9"ff --insidewrongcolor="$color1"ff --radius=15 --veriftext=" " --wrongtext=" " --datestr="" --timecolor="$pforeground"ff

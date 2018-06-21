@@ -1,0 +1,4 @@
+#!/bin/bash
+artist=$(playerctl -p spotify metadata xesam:artist)
+title=$(playerctl -p spotify metadata xesam:title)
+echo $artist - $title

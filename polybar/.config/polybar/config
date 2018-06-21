@@ -1,0 +1,302 @@
+[colors]
+include-file = /home/craig/scripts/garden.sh
+include-file = /home/craig/.config/bspwm/bspwmrc
+
+
+
+[global/wm]
+margin-top        = 0
+margin-bottom     = 0
+override-redirect = true
+
+;----------------------------------------------------------
+;		       B A R
+;----------------------------------------------------------
+[bar/garden]
+monitor             = ${env:MONITOR:LVDS-0}
+override-redirect   = true
+wm-restack          = bspwm
+width               = 100%
+height              = 20
+margin-top          = 0
+offset-x            = 0
+offset-y            = 0
+top                 = true
+;bottom              = true
+fixed-center        = true
+background          = ${colors.pbackground}
+foreground          = ${colors.pforeground}
+font-0              = lucy tewi:style=Regular:size=9:antialias=true;0
+font-1              = FontAwesome:size=8;
+font-2              = Wuncon Siji:size=9;0
+font-3              = Lohit Hindi:size=8;
+font-4              = MesloLGS Nerd Font:size=8;
+modules-left        = powermenu bspwm
+modules-center      = spotibar
+modules-right       = weather backlight volume battery network eth date dropbox
+spacing             = 1
+padding-left        = 1
+padding-right       = 1
+scroll-up           = bspwm-desknext
+scroll-down         = bspwm-deskprev
+
+;----------------------------------------------------------
+;		       B A R     ---   MULTI MONITOR
+;----------------------------------------------------------
+[bar/garden2]
+monitor             = ${env:MONITOR:DP-0}
+override-redirect   = true
+wm-restack          = bspwm
+width               = 100%
+height              = 20
+margin-top          = 10
+offset-x            = 0
+offset-y            = 0
+top                 = true
+;bottom              = true
+fixed-center        = true
+background          = ${colors.background}
+foreground          = ${colors.pforeground}
+font-0              = lucy tewi:style=Regularifica:size=11:antialias=true;0
+font-1              = FontAwesome:size=8;
+font-2              = Siji:size=9;
+font-3              = Lohit Hindi:size=9;
+font-4              = MesloLGS Nerd Font:size=8;
+modules-left        = powermenu bspwm
+modules-center      = spotibar
+modules-right       = weather volumeTV network eth date dropbox
+spacing             = 1
+padding-left        = 1
+padding-right       = 1
+scroll-up           = bspwm-desknext
+scroll-down         = bspwm-deskprev
+
+;----------------------------------------------------------
+;		         B S P W M   M O D U L E
+;----------------------------------------------------------
+[module/bspwm]
+type                      = internal/bspwm
+pin-workspaces            = true
+enable-click              = true
+enable-scroll             = true
+reverse-scroll            = false
+label-focused             = %name%
+label-focused-foreground  = ${colors.yellow}
+label-focused-padding     = 1
+label-focused-font        = 0
+label-occupied            = %name%
+label-occupied-foreground = ${colors.green}
+label-occupied-padding    = 1
+label-occupied-font       = 0
+label-urgent              = %name%
+label-urgent-foreground   = ${colors.red}
+label-urgent-padding      = 1
+label-urgent-font         = 0
+label-empty               = %name%
+label-empty-foreground    = ${colors.pbackground}
+label-empty-padding       = 1
+label-empty-font          = 0
+;----------------------------------------------------------
+;			        V O L U M E
+;----------------------------------------------------------
+[module/volume]
+type                    = internal/alsa
+format-volume           = <ramp-volume><label-volume>
+format-volume-padding   = 2
+module-margin-right     = 0
+ramp-volume-0           = 
+ramp-volume-1           = 
+ramp-volume-2           = 
+ramp-volume-foreground  = ${colors.violet}
+label-volume            = %percentage%
+label-muted-padding     = 2
+label-muted             = muted
+label-muted-foreground  = ${colors.violet}
+;----------------------------------------------------------
+;			        V O L U M E
+;----------------------------------------------------------
+[module/volumeTV]
+type                    = internal/alsa
+format-volume           = <ramp-volume><label-volume>
+format-volume-padding   = 2
+module-margin-right     = 0
+ramp-volume-0           = 
+ramp-volume-1           = 
+ramp-volume-2           = 
+ramp-volume-foreground  = ${colors.violet}
+label-volume            = %percentage%
+label-muted-padding     = 2
+label-muted             = muted
+label-muted-foreground  = ${colors.violet}
+;----------------------------------------------------------
+;		          D A T E  &  T I M E
+;----------------------------------------------------------
+[module/date]
+type                      = internal/date
+interval                  = 1
+date                      = ""
+date-alt                  = " %A %d %B"
+time                      = "%I:%M"
+time-alt                  = "%I:%M:%S"
+format-prefix             = 
+format-prefix-foreground  = ${colors.red}
+format-padding            = 2
+label                     = "%date% %time%"
+;----------------------------------------------------------
+;		        B A T T E R Y
+;----------------------------------------------------------
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT0
+adapter = AC
+poll-interval = 10
+
+time-format = %H:%M
+
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+format-full = <ramp-capacity>
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current charge rate in watts)
+label-charging = %percentage%
+
+; Available tokens:
+;   %percentage% (default)
+;   %time%
+;   %consumption% (shows current discharge rate in watts)
+label-discharging = %time%
+
+; Only applies if <ramp-capacity> is used
+ramp-capacity-foreground  = ${colors.green}
+ramp-capacity-0 =
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+; Only applies if <animation-charging> is used
+animation-charging-foreground  = ${colors.green}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 1000
+
+;----------------------------------------------------------
+;		         P O W E R        M E N U
+;----------------------------------------------------------
+[module/powermenu]
+type                        = custom/menu
+label-open                  =  
+label-open-foreground       = ${colors.red}
+label-open-background       = ${colors.pbackground}
+label-open-padding          = 1
+label-close                 = ✖
+label-close-padding         = 1
+label-close-foreground      = ${colors.red}
+label-separator             = │
+label-separator-foreground  = ${colors.red}
+menu-0-0      = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1      = poweroff
+menu-0-1-exec = menu-open-2
+menu-0-2      = logout
+menu-0-2-exec = menu-open-3
+menu-1-0      = ✖
+menu-1-0-exec = menu-open-0
+menu-1-1      = ✔
+menu-1-1-exec = systemctl reboot
+menu-2-0      = ✔
+menu-2-0-exec = systemctl poweroff
+menu-2-1      = ✖
+menu-2-1-exec = menu-open-0
+menu-3-0      = ✔
+menu-3-0-exec = bspc quit
+menu-3-1      = ✖
+menu-3-1-exec = menu-open-0
+;----------------------------------------------------------
+;		         B A C K L I G H T -     
+;----------------------------------------------------------
+; To list available cards use: $ ls -1 /sys/class/backlight/
+[module/backlight]
+type              = internal/xbacklight
+card              = intel_backlight
+format            = <label>
+format-padding    = 0
+label             = 
+label-foreground  = ${colors.yellow}
+;----------------------------------------------------------
+;	          W I R E L E S S      
+;----------------------------------------------------------
+; To test interface: $ ls -1 /sys/class/net/
+[module/network]
+type                          = internal/network
+interface                     = wlp3s0
+interval                      = 5
+format-connected              = <label-connected>
+format-disconnected           = <label-disconnected>
+label-connected               = "  "
+label-disconnected            = "  "
+label-connected-foreground    = ${colors.cyan}
+label-disconnected-foreground = ${colors.red}
+;----------------------------------------------------------
+;   		    E T H E R N E T   
+;----------------------------------------------------------
+; To test interface: $ ls -1 /sys/class/net/
+[module/eth]
+type                          = internal/network
+interface                     = enp0s25
+interval                      = 0.5
+label-connected               = "   %local_ip% %downspeed:8%  %upspeed:8%  "
+label-connected-foreground    = ${colors.red}
+label-disconnected            =
+label-disconnected-foreground = ${colors.pforeground}
+;----------------------------------------------------------
+;		        D R O P B O X
+;----------------------------------------------------------
+[module/dropbox]
+type        = custom/script
+exec        = ~/scripts/barbox
+interval    = 5
+label       = %output%
+format      = <label>
+click-left  = ~/scripts/barbox --toggle
+tail        = true
+;----------------------------------------------------------
+;		         W E A T H E R
+;----------------------------------------------------------
+[module/weather]
+type                      = custom/script
+exec                      = ~/scripts/weather
+interval                  = 120
+format                    = <label>
+format-padding            = 2
+format-prefix             = " "
+format-suffix             = "°"
+format-prefix-foreground  = ${colors.pforeground}
+format-background         = ${colors.pbackground}
+click-left                = xdg-open https://darksky.net/
+tail                      = true
+;----------------------------------------------------------
+;		         S P O T I B A R
+;----------------------------------------------------------
+[module/spotibar]
+type              = custom/script
+exec              = ~/scripts/spotibar
+exec-if           = pgrep spotify > /dev/null
+interval          = 1
+click-left        = playerctl -p spotify play-pause
+format-foreground = ${colors.pforeground}
+format-background = ${colors.pbackground}
+format-padding    = 1
+tail              = true

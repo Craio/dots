@@ -1,0 +1,8 @@
+#!/bin/bash
+source "$HOME/scripts/secrets"
+
+darkskykey=$weather
+lat=57.1482
+lng=-2.0928
+data=$(curl -s "https://api.darksky.net/forecast/"$darkskykey"/"$lat","$lng"?units=si&exclude=flags,minutely,hourly,daily,alerts" | grep -Po 'temperature":\K[[:digit:]]*')
+echo $data

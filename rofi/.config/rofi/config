@@ -1,0 +1,25 @@
+! -----------------------------------------------------------
+!                      ROFI Settings
+! -----------------------------------------------------------
+! General
+rofi.font:               lucy tewi 9
+rofi.hide-scrollbar:     true
+
+! Layout
+rofi.width:              25
+rofi.location:           0
+rofi.lines:              8
+rofi.padding:            15
+rofi.sidebar-mode:       false
+rofi.fullscreen:         false
+
+! -----------------------------------------------------------
+!                      ROFI Color theme
+! -----------------------------------------------------------
+rofi.color-enabled:      true
+! State                  'bg'     'fg'     'bgalt'  'hlbg'   'hlfg'
+rofi.color-normal:       #322825, #90BD39, #322825, #b5bd68, #322825
+rofi.color-active:       #322825, #90BD39, #322825, #b5bd68, #322825
+rofi.color-urgent:       #322825, #cc4a4a, #322825, #cc6666, #322825
+!                        'bg'     'bc'
+rofi.color-window:       #322825, #90BD39
