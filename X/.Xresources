@@ -1,16 +1,20 @@
-source /home/craig/.config/bspwm/bspwmrc
-
 ! Fonts
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.antialias: true
-!Xft.dpi: 166
 Xft.dpi: 96
 
+URxvt.font: -*-tewi-medium-*-*-*-11-150-*-*-*-*-*-*,\
+			-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+
 ! Font Spacing
-URxvt.letterSpace: 1
-URxvt.lineSpace:   1
+URxvt.letterSpace: 0
+URxvt.lineSpace:   0
 
 ! URxvt
 URxvt.scrollBar: false
-URxvt.internalBorder: 15
+URxvt.internalBorder: 10
+
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
