@@ -15,7 +15,8 @@ prp="\e[35;1m"
 rst="\e[0m"
 reddit="/u/psiil"
 
-# detect
+#█▓▒░
+#█▓▒░  detect
 user=$(whoami)
 shell=$(basename $SHELL)
 artist=$(playerctl -p spotify metadata xesam:artist)
@@ -52,7 +53,8 @@ wm
 clear && printf '\e[3J'
 echo
 echo
-# shell
+#█▓▒░
+#█▓▒░  shell
 color-echo $red▪$rst $redl▪$rst    $redl' user   '    $user
 color-echo $grn▪$rst $grnl▪$rst    $grnl' distro '    $os
 color-echo $blu▪$rst $blul▪$rst    $blul' wm     '    $wm

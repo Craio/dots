@@ -1,7 +1,5 @@
-#========================#
-# wm independent hotkeys #
-#========================#
-
+#█▓▒░
+#█▓▒░ WM independent hotkeys
 # Terminal emulator
 super + Return
 	termite
@@ -14,10 +12,9 @@ super + space
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#===============#
-# bspwm hotkeys #
-#===============#
 
+#█▓▒░
+#█▓▒░ bspwm hotkeys
 # quit bspwm normally
 super + alt + Escape
 	bspc quit
@@ -34,11 +31,6 @@ super + m
 super + {t,shift + t,s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
 
-# Toogle tiling of window
-super + d
-	bspc query --nodes -n focused.tiled && state=floating || state=tiled; \
-	bspc node --state \~$state
-
 # Preselect the splitting area for next window on leaf/parent
 super + ctrl + {Left,Down,Up,Right}
 	bspc node --presel-dir \~{west,south,north,east}
@@ -47,27 +39,26 @@ super + ctrl + {Left,Down,Up,Right}
 super + ctrl + space
 	bspc node --presel-dir cancel
 
-#============#
-# focus/swap #
-#============#
 
-# focus the next/previous node in the current desktop
+#█▓▒░
+#█▓▒░ Focus / Swap
+# Focus the next/previous node in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local
 
-# focus the next/previous desktop in the current monitor
+# Focus the next/previous desktop in the current monitor
 super + {Left,Right}
 	bspc desktop -f {prev,next}.local
 
-# focus the last node/desktop
+# Focus the last node/desktop
 super + {grave,Tab}
 	bspc {node,desktop} -f last
 
-# focus or send to the given desktop
+# Focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-# rotate tree
+# Rotate tree
 super + r
 	bspc node @/ -R 90
 
@@ -79,16 +70,18 @@ super + equal
 super + minus
 	bspc node @/ --balance
 
-#==============#
-#  Extra stuff #
-#==============#
 
+#█▓▒░
+#█▓▒░ Extras
 # Lock the session.
 super + l
   bash ~/scripts/lock
 
 Print
 	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
+
+super + Print
+	scrot -u '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/RS/'
 
 #	Mute speaker volume
 XF86Launch1
@@ -106,7 +99,7 @@ XF86AudioMute
 XF86AudioMicMute
 	amixer set Capture toggle
 
-# song controls
+# Song controls
 XF86AudioPrev
 	playerctl previous
 
@@ -118,10 +111,10 @@ XF86AudioNext
 
 # Expand/contract bspwm's window gaps.
 super + alt + Up
-	bspc config window_gap {30,60,120,240}
+	bspc config window_gap {150,135,120,105,90,75,60,45,30,15}
 
 super + alt + Down
-	bspc config window_gap {90,60,30,15}
+	bspc config window_gap {15,30,45,60,75,90,105,120,135,150}
 
 super + alt + {Left,Right}
 	bspc config window_gap 15

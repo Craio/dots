@@ -1,18 +1,27 @@
 [colors]
-include-file = /home/craig/scripts/garden.sh
-include-file = /home/craig/.config/bspwm/bspwmrc
+foreground=${xrdb:color7}
+background=${xrdb:color0}
+power=${xrdb:color5}
+focused=${xrdb:color7}
+unfocused=${xrdb:color4}
 
-
+red=#cc4a4a
+green=#90BD39
+yellow=#F09F41
+blue=#2A7ABE
+violet=#a763bb
+cyan=#18BEA8
+white=#fafafa
 
 [global/wm]
 margin-top        = 0
 margin-bottom     = 0
 override-redirect = true
 
-;----------------------------------------------------------
-;		       B A R
-;----------------------------------------------------------
-[bar/garden]
+
+#█▓▒░
+#█▓▒░ Bar
+[bar/laptop]
 monitor             = ${env:MONITOR:LVDS-0}
 override-redirect   = true
 wm-restack          = bspwm
@@ -22,10 +31,9 @@ margin-top          = 0
 offset-x            = 0
 offset-y            = 0
 top                 = true
-;bottom              = true
 fixed-center        = true
-background          = ${colors.pbackground}
-foreground          = ${colors.pforeground}
+background          = ${colors.background}
+foreground          = ${colors.foreground}
 font-0              = lucy tewi:style=Regular:size=9:antialias=true;0
 font-1              = FontAwesome:size=8;
 font-2              = Wuncon Siji:size=9;0
@@ -33,17 +41,17 @@ font-3              = Lohit Hindi:size=8;
 font-4              = MesloLGS Nerd Font:size=8;
 modules-left        = powermenu bspwm
 modules-center      = spotibar
-modules-right       = weather backlight volume battery network eth date dropbox
+modules-right       = weather volume battery network eth date dropbox
 spacing             = 1
 padding-left        = 1
 padding-right       = 1
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
-;----------------------------------------------------------
-;		       B A R     ---   MULTI MONITOR
-;----------------------------------------------------------
-[bar/garden2]
+
+#█▓▒░
+#█▓▒░ Bar - External Monitor
+[bar/external]
 monitor             = ${env:MONITOR:DP-0}
 override-redirect   = true
 wm-restack          = bspwm
@@ -56,7 +64,7 @@ top                 = true
 ;bottom              = true
 fixed-center        = true
 background          = ${colors.background}
-foreground          = ${colors.pforeground}
+foreground          = ${colors.foreground}
 font-0              = lucy tewi:style=Regularifica:size=11:antialias=true;0
 font-1              = FontAwesome:size=8;
 font-2              = Siji:size=9;
@@ -71,9 +79,9 @@ padding-right       = 1
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
-;----------------------------------------------------------
-;		         B S P W M   M O D U L E
-;----------------------------------------------------------
+
+#█▓▒░
+#█▓▒░ bspwm Module
 [module/bspwm]
 type                      = internal/bspwm
 pin-workspaces            = true
@@ -81,11 +89,11 @@ enable-click              = true
 enable-scroll             = true
 reverse-scroll            = false
 label-focused             = %name%
-label-focused-foreground  = ${colors.yellow}
+label-focused-foreground  = ${colors.focused}
 label-focused-padding     = 1
 label-focused-font        = 0
 label-occupied            = %name%
-label-occupied-foreground = ${colors.green}
+label-occupied-foreground = ${colors.unfocused}
 label-occupied-padding    = 1
 label-occupied-font       = 0
 label-urgent              = %name%
@@ -93,14 +101,21 @@ label-urgent-foreground   = ${colors.red}
 label-urgent-padding      = 1
 label-urgent-font         = 0
 label-empty               = %name%
-label-empty-foreground    = ${colors.pbackground}
+label-empty-foreground    = ${colors.background}
 label-empty-padding       = 1
 label-empty-font          = 0
-;----------------------------------------------------------
-;			        V O L U M E
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Volume
 [module/volume]
 type                    = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+master-mixer = Master
+
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
@@ -112,11 +127,18 @@ label-volume            = %percentage%
 label-muted-padding     = 2
 label-muted             = muted
 label-muted-foreground  = ${colors.violet}
-;----------------------------------------------------------
-;			        V O L U M E
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Volume - External
 [module/volumeTV]
 type                    = internal/alsa
+
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+master-mixer = Master
+
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
@@ -128,9 +150,10 @@ label-volume            = %percentage%
 label-muted-padding     = 2
 label-muted             = muted
 label-muted-foreground  = ${colors.violet}
-;----------------------------------------------------------
-;		          D A T E  &  T I M E
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Date and Time
 [module/date]
 type                      = internal/date
 interval                  = 1
@@ -139,12 +162,13 @@ date-alt                  = " %A %d %B"
 time                      = "%I:%M"
 time-alt                  = "%I:%M:%S"
 format-prefix             = 
-format-prefix-foreground  = ${colors.red}
+format-prefix-foreground  = ${colors.power}
 format-padding            = 2
 label                     = "%date% %time%"
-;----------------------------------------------------------
-;		        B A T T E R Y
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Battery
 [module/battery]
 type = internal/battery
 
@@ -155,7 +179,7 @@ full-at = 99
 ; $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = AC
-poll-interval = 10
+poll-interval = 2
 
 time-format = %H:%M
 
@@ -192,14 +216,14 @@ animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 1000
 
-;----------------------------------------------------------
-;		         P O W E R        M E N U
-;----------------------------------------------------------
+
+#█▓▒░
+#█▓▒░ Power Menu
 [module/powermenu]
 type                        = custom/menu
 label-open                  =  
-label-open-foreground       = ${colors.red}
-label-open-background       = ${colors.pbackground}
+label-open-foreground       = ${colors.power}
+label-open-background       = ${colors.background}
 label-open-padding          = 1
 label-close                 = ✖
 label-close-padding         = 1
@@ -224,9 +248,10 @@ menu-3-0      = ✔
 menu-3-0-exec = bspc quit
 menu-3-1      = ✖
 menu-3-1-exec = menu-open-0
-;----------------------------------------------------------
-;		         B A C K L I G H T -     
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Backlight
 ; To list available cards use: $ ls -1 /sys/class/backlight/
 [module/backlight]
 type              = internal/xbacklight
@@ -235,35 +260,38 @@ format            = <label>
 format-padding    = 0
 label             = 
 label-foreground  = ${colors.yellow}
-;----------------------------------------------------------
-;	          W I R E L E S S      
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Wireless Network
 ; To test interface: $ ls -1 /sys/class/net/
 [module/network]
 type                          = internal/network
 interface                     = wlp3s0
-interval                      = 5
+interval                      = 2
 format-connected              = <label-connected>
 format-disconnected           = <label-disconnected>
 label-connected               = "  "
 label-disconnected            = "  "
 label-connected-foreground    = ${colors.cyan}
 label-disconnected-foreground = ${colors.red}
-;----------------------------------------------------------
-;   		    E T H E R N E T   
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Wired Network
 ; To test interface: $ ls -1 /sys/class/net/
 [module/eth]
 type                          = internal/network
 interface                     = enp0s25
-interval                      = 0.5
+interval                      = 5
 label-connected               = "   %local_ip% %downspeed:8%  %upspeed:8%  "
 label-connected-foreground    = ${colors.red}
 label-disconnected            =
-label-disconnected-foreground = ${colors.pforeground}
-;----------------------------------------------------------
-;		        D R O P B O X
-;----------------------------------------------------------
+label-disconnected-foreground = ${colors.foreground}
+
+
+#█▓▒░
+#█▓▒░ Dropbox
 [module/dropbox]
 type        = custom/script
 exec        = ~/scripts/barbox
@@ -272,31 +300,33 @@ label       = %output%
 format      = <label>
 click-left  = ~/scripts/barbox --toggle
 tail        = true
-;----------------------------------------------------------
-;		         W E A T H E R
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Weather
 [module/weather]
 type                      = custom/script
 exec                      = ~/scripts/weather
 interval                  = 120
 format                    = <label>
-format-padding            = 2
+format-padding            = 0
 format-prefix             = " "
 format-suffix             = "°"
-format-prefix-foreground  = ${colors.pforeground}
-format-background         = ${colors.pbackground}
+format-prefix-foreground  = ${colors.foreground}
+format-background         = ${colors.background}
 click-left                = xdg-open https://darksky.net/
 tail                      = true
-;----------------------------------------------------------
-;		         S P O T I B A R
-;----------------------------------------------------------
+
+
+#█▓▒░
+#█▓▒░ Spotibar
 [module/spotibar]
 type              = custom/script
 exec              = ~/scripts/spotibar
 exec-if           = pgrep spotify > /dev/null
 interval          = 1
 click-left        = playerctl -p spotify play-pause
-format-foreground = ${colors.pforeground}
-format-background = ${colors.pbackground}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
 format-padding    = 1
 tail              = true

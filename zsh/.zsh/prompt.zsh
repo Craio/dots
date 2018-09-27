@@ -1,13 +1,5 @@
-#                 ██
-#                ░██
-#  ██████  ██████░██
-# ░░░░██  ██░░░░ ░██████
-#    ██  ░░█████ ░██░░░██
-#   ██    ░░░░░██░██  ░██
-#  ██████ ██████ ░██  ░██
-# ░░░░░░ ░░░░░░  ░░   ░░
-#
-source "$HOME/scripts/garden.sh"
+#█▓▒░ Pywal
+cat /home/craig/.cache/wal/sequences
 
 ICO_DIRTY="*"
 ICO_AHEAD="↱"
@@ -18,11 +10,11 @@ COLOR_USER="%F{green}"
 COLOR_NORMAL="%F{white}"
 PROMPT_STYLE="classic"
 
-#█▓▒░ allow functions in the prompt
+#█▓▒░ Allow functions in the prompt
 setopt PROMPT_SUBST
 autoload -Uz colors && colors
 
-#█▓▒░ colors for permissions
+#█▓▒░ Colors for permissions
 if [[ "$EUID" -ne "0" ]]
 then  # if user is not root
 	USER_LEVEL="${COLOR_USER}"
@@ -30,7 +22,7 @@ else # root!
 	USER_LEVEL="${COLOR_ROOT}"
 fi
 
-#█▓▒░ git prompt
+#█▓▒░ Git prompt
 GIT_PROMPT() {
   test=$(git rev-parse --is-inside-work-tree 2> /dev/null)
   if [ ! "$test" ]
@@ -61,7 +53,7 @@ GIT_PROMPT() {
   esac
 }
 case "$PROMPT_STYLE" in
-#█▓▒░ classic
+#█▓▒░ Classic
 *)
 PROMPT='${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT)── ─ %f'
 ;;

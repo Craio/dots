@@ -1,13 +1,4 @@
-#                 ██
-#                ░██
-#  ██████  ██████░██
-# ░░░░██  ██░░░░ ░██████
-#    ██  ░░█████ ░██░░░██
-#   ██    ░░░░░██░██  ░██
-#  ██████ ██████ ░██  ░██
-# ░░░░░░ ░░░░░░  ░░   ░░
-#
-#█▓▒░ aliases
+#█▓▒░ Aliases
 alias ls="ls -hF --color=auto"
 alias ll="ls -lahF --color=auto"
 alias lsl="ls -lhF --color=auto"
@@ -24,3 +15,4 @@ alias gamingoff="sudo cpupower frequency-set -g powersave"
 alias plex="systemctl start plexmediaserver.service"
 alias plexstop="systemctl stop plexmediaserver.service"
 alias scan="sudo iw dev wlp3s0 scan"
+alias lyrics="python ~/scripts/lyrics.py"

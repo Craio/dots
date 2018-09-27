@@ -1,18 +1,9 @@
-#                 ██
-#                ░██
-#  ██████  ██████░██
-# ░░░░██  ██░░░░ ░██████
-#    ██  ░░█████ ░██░░░██
-#   ██    ░░░░░██░██  ░██
-#  ██████ ██████ ░██  ░██
-# ░░░░░░ ░░░░░░  ░░   ░░
-#
-#█▓▒░ timestamps
+#█▓▒░ Timestamps
 #HIST_STAMPS=mm/dd/yyyy
 
-#█▓▒░ paths
+#█▓▒░ Paths
 export PATH=$HOME/scripts:/usr/local/bin:$PATH
 
-#█▓▒░ preferred editor for local and remote sessions
+#█▓▒░ Preferred editor for local and remote sessions
 export EDITOR=atom
 export VISUAL=atom

@@ -1,3 +1,5 @@
+source /home/craig/.config/bspwm/bspwmrc
+
 ! Fonts
 Xft.hinting: true
 Xft.rgba: rgb
@@ -11,5 +13,4 @@ URxvt.lineSpace:   1
 
 ! URxvt
 URxvt.scrollBar: false
-!URxvt.font: xft:scientifica:size=9
-URxvt.internalBorder: 18
+URxvt.internalBorder: 15
