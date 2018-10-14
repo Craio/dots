@@ -1,4 +1,5 @@
 ! Fonts
+URxvt.geometry: 75x20
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.antialias: true

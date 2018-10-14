@@ -2,11 +2,14 @@
 #█▓▒░ WM independent hotkeys
 # Terminal emulator
 super + Return
+	urxvt
+
+super + alt + Return
 	termite
 
 # Program launcher.
 super + space
-	rofi -terminal termite -show run
+	rofi -terminal urxvt -show run
 
 # Make sxhkd reload its configuration files:
 super + Escape
