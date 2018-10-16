@@ -266,25 +266,25 @@ menu-3-1-exec = systemctl poweroff
 menu-3-2     = ⠀
 
 menu-4-0      = Azure
-menu-4-0-exec = wal -i ~/scripts/setups/Azure/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-0-exec = wal -i ~/scripts/setups/Azure/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-1      = Ganesha
-menu-4-1-exec = wal -i ~/scripts/setups/Ganesha/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-1-exec = wal -i ~/scripts/setups/Ganesha/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-2      = Garden
-menu-4-2-exec = wal -i ~/scripts/setups/Garden/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-2-exec = wal -i ~/scripts/setups/Garden/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-3      = Gas
-menu-4-3-exec = wal -i ~/scripts/setups/Gas/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.Gascache/wal/colors.Xresources
+menu-4-3-exec = wal -i ~/scripts/setups/Gas/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-4      = Leaf
-menu-4-4-exec = wal -i ~/scripts/setups/Leaf/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-4-exec = wal -i ~/scripts/setups/Leaf/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-5      = Rakshasa
-menu-4-5-exec = wal -i ~/scripts/setups/Rakshasa/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-5-exec = wal -i ~/scripts/setups/Rakshasa/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-6      = Sacred
-menu-4-6-exec = wal -i ~/scripts/setups/Sacred/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-6-exec = wal -i ~/scripts/setups/Sacred/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-7      = Sand
-menu-4-7-exec = wal -i ~/scripts/setups/Sand/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-7-exec = wal -i ~/scripts/setups/Sand/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-8      = Seafoam
-menu-4-8-exec = wal -i ~/scripts/setups/Seafoam/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-8-exec = wal -i ~/scripts/setups/Seafoam/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-9      = Tulip
-menu-4-9-exec = wal -i ~/scripts/setups/Tulip/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources
+menu-4-9-exec = wal -i ~/scripts/setups/Tulip/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 #█▓▒░ Blank character for | decoration
 menu-4-10     = ⠀
 
