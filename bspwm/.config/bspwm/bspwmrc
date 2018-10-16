@@ -25,7 +25,7 @@ quickserve .cache/wal/ &
 
 #█▓▒░
 #█▓▒░ bspwm settings // ० ० ० ० ०
-bspc monitor LVDS-0 -d क दो तीन चार पांच
+bspc monitor LVDS-0 -d एक दो तीन चार पांच
 bspc monitor DP-0 -d ० ० ० ० ०
 
 bspc config border_width         3
