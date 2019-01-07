@@ -1,6 +1,6 @@
 #█▓▒░
 #█▓▒░  General
-rofi.font:               lucy tewi 9
+rofi.font:               SF Mono 10
 rofi.hide-scrollbar:     true
 
 #█▓▒░

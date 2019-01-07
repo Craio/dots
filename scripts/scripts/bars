@@ -4,5 +4,5 @@ if type "xrandr"; then
     MONITOR=$m polybar --reload laptop &
   done
 else
-  polybar --reload external &
+  polybar --reload monitor &
 fi

@@ -22,63 +22,58 @@ override-redirect = true
 #█▓▒░
 #█▓▒░ Bar
 [bar/laptop]
-monitor             = ${env:MONITOR:LVDS-0}
+monitor             = ${env:MONITOR:DP-2}
 override-redirect   = true
+dpi                 = 144
 wm-restack          = bspwm
-width               = 100%
-height              = 20
-margin-top          = 0
-offset-x            = 0
-offset-y            = 0
+width               = 98%
+height              = 2.5%
+radius              = 15%
+offset-x            = 1%
+offset-y            = 1.5%
 top                 = true
 fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
-font-0              = lucy tewi:style=Regular:size=9:antialias=true;0
-font-1              = FontAwesome:size=8;
-font-2              = Wuncon Siji:size=9;0
-font-3              = Lohit Hindi:size=8;
-font-4              = MesloLGS Nerd Font:size=8;
+font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
+font-1              = Lohit Hindi:size=9:antialias=true;0
+font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
 modules-left        = powermenu bspwm
 modules-center      = spotibar
-modules-right       = weather volume battery network eth date dropbox
-spacing             = 1
-padding-left        = 1
-padding-right       = 1
+modules-right       = weather backlight volume battery network date dropbox
+spacing             = 2
+padding-left        = 2
+padding-right       = 2
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
-
 
 #█▓▒░
-#█▓▒░ Bar - External Monitor
-[bar/external]
-monitor             = ${env:MONITOR:DP-0}
+#█▓▒░ Bar
+[bar/monitor]
+monitor             = ${env:MONITOR:HDMI}
 override-redirect   = true
+dpi                 = 144
 wm-restack          = bspwm
-width               = 100%
-height              = 20
-margin-top          = 10
-offset-x            = 0
-offset-y            = 0
+width               = 98%
+height              = 2.5%
+radius              = 15%
+offset-x            = 1%
+offset-y            = 1.5%
 top                 = true
-;bottom              = true
 fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
-font-0              = lucy tewi:style=Regularifica:size=11:antialias=true;0
-font-1              = FontAwesome:size=8;
-font-2              = Siji:size=9;
-font-3              = Lohit Hindi:size=9;
-font-4              = MesloLGS Nerd Font:size=8;
+font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
+font-1              = Lohit Hindi:size=9:antialias=true;0
+font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
 modules-left        = powermenu bspwm
 modules-center      = spotibar
-modules-right       = weather volumeTV network eth date dropbox
-spacing             = 1
-padding-left        = 1
-padding-right       = 1
+modules-right       = weather volume battery network date dropbox
+spacing             = 2
+padding-left        = 2
+padding-right       = 2
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
-
 
 #█▓▒░
 #█▓▒░ bspwm Module
@@ -91,19 +86,19 @@ reverse-scroll            = false
 label-focused             = %name%
 label-focused-foreground  = ${colors.focused}
 label-focused-padding     = 1
-label-focused-font        = 0
+label-focused-font        = 1
 label-occupied            = %name%
 label-occupied-foreground = ${colors.unfocused}
 label-occupied-padding    = 1
-label-occupied-font       = 0
+label-occupied-font       = 1
 label-urgent              = %name%
 label-urgent-foreground   = ${colors.red}
 label-urgent-padding      = 1
-label-urgent-font         = 0
+label-urgent-font         = 1
 label-empty               = %name%
 label-empty-foreground    = ${colors.background}
 label-empty-padding       = 1
-label-empty-font          = 0
+label-empty-font          = 1
 
 
 #█▓▒░
@@ -111,17 +106,17 @@ label-empty-font          = 0
 [module/volume]
 type                    = internal/alsa
 
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-master-mixer = Master
+master-soundcard        = default
+speaker-soundcard       = default
+headphone-soundcard     = default
+master-mixer            = Master
 
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
-ramp-volume-0           = 
-ramp-volume-1           = 
-ramp-volume-2           = 
+ramp-volume-0           = 
+ramp-volume-1           = 
+ramp-volume-2           = 
 ramp-volume-foreground  = ${colors.violet}
 label-volume            = %percentage%
 label-muted-padding     = 2
@@ -142,9 +137,9 @@ master-mixer = Master
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
-ramp-volume-0           = 
-ramp-volume-1           = 
-ramp-volume-2           = 
+ramp-volume-0           = 
+ramp-volume-1           = 
+ramp-volume-2           = 
 ramp-volume-foreground  = ${colors.violet}
 label-volume            = %percentage%
 label-muted-padding     = 2
@@ -157,11 +152,11 @@ label-muted-foreground  = ${colors.violet}
 [module/date]
 type                      = internal/date
 interval                  = 1
-date                      = ""
+date                      =
 date-alt                  = " %A %d %B"
 time                      = "%I:%M"
 time-alt                  = "%I:%M:%S"
-format-prefix             = 
+format-prefix             = 
 format-prefix-foreground  = ${colors.power}
 format-padding            = 2
 label                     = "%date% %time%"
@@ -173,7 +168,7 @@ label                     = "%date% %time%"
 type = internal/battery
 
 ; This is useful in case the battery never reports 100% charge
-full-at = 89
+full-at = 100
 
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
@@ -221,14 +216,14 @@ animation-charging-framerate = 1000
 #█▓▒░ Power Menu
 [module/powermenu]
 type                        = custom/menu
-label-open                  =  
+label-open                  = 
 label-open-foreground       = ${colors.power}
 label-open-background       = ${colors.background}
 label-open-padding          = 1
-label-close                 = ✖
+label-close                 = 
 label-close-padding         = 1
 label-close-foreground      = ${colors.red}
-label-separator             = │
+label-separator             = ⏽
 label-separator-foreground  = ${colors.unfocused}
 
 
@@ -285,8 +280,10 @@ menu-4-8      = Seafoam
 menu-4-8-exec = wal -i ~/scripts/setups/Seafoam/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 menu-4-9      = Tulip
 menu-4-9-exec = wal -i ~/scripts/setups/Tulip/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
+menu-4-10      = Wreck
+menu-4-10-exec = wal -i ~/scripts/setups/Wreck/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
 #█▓▒░ Blank character for | decoration
-menu-4-10     = ⠀
+menu-4-11     = ⠀
 
 
 #█▓▒░
@@ -294,10 +291,10 @@ menu-4-10     = ⠀
 ; To list available cards use: $ ls -1 /sys/class/backlight/
 [module/backlight]
 type              = internal/xbacklight
-card              = intel_backlight
+card              = nvidia_0
 format            = <label>
 format-padding    = 0
-label             = 
+label             = 
 label-foreground  = ${colors.yellow}
 
 
@@ -306,7 +303,7 @@ label-foreground  = ${colors.yellow}
 ; To test interface: $ ls -1 /sys/class/net/
 [module/network]
 type                          = internal/network
-interface                     = wlp3s0
+interface                     = wlp0s20f3
 interval                      = 2
 format-connected              = <label-connected>
 format-disconnected           = <label-disconnected>
@@ -314,19 +311,6 @@ label-connected               = "  "
 label-disconnected            = "  "
 label-connected-foreground    = ${colors.cyan}
 label-disconnected-foreground = ${colors.red}
-
-
-#█▓▒░
-#█▓▒░ Wired Network
-; To test interface: $ ls -1 /sys/class/net/
-[module/eth]
-type                          = internal/network
-interface                     = enp0s25
-interval                      = 5
-label-connected               = "   %local_ip% %downspeed:8%  %upspeed:8%  "
-label-connected-foreground    = ${colors.red}
-label-disconnected            =
-label-disconnected-foreground = ${colors.foreground}
 
 
 #█▓▒░
@@ -348,7 +332,7 @@ type                      = custom/script
 exec                      = ~/scripts/weather
 interval                  = 120
 format                    = <label>
-format-padding            = 0
+format-padding            = 2
 format-prefix             = " "
 format-suffix             = "°"
 format-prefix-foreground  = ${colors.foreground}

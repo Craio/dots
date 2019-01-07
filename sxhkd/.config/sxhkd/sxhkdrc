@@ -86,8 +86,8 @@ Print
 super + Print
 	scrot -u '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/RS/'
 
-#	Mute speaker volume
-XF86Launch1
+#	Reload bspwm
+XF86Tools
 	./.config/bspwm/bspwmrc
 
 #	Mute speaker volume
