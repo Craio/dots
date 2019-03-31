@@ -48,34 +48,6 @@ scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
 #█▓▒░
-#█▓▒░ Bar
-[bar/monitor]
-monitor             = ${env:MONITOR:HDMI}
-override-redirect   = true
-dpi                 = 144
-wm-restack          = bspwm
-width               = 98%
-height              = 2.5%
-radius              = 15%
-offset-x            = 1%
-offset-y            = 1.5%
-top                 = true
-fixed-center        = true
-background          = ${colors.background}
-foreground          = ${colors.foreground}
-font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
-font-1              = Lohit Hindi:size=9:antialias=true;0
-font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
-modules-left        = powermenu bspwm
-modules-center      = spotibar
-modules-right       = weather volume battery network date dropbox
-spacing             = 2
-padding-left        = 2
-padding-right       = 2
-scroll-up           = bspwm-desknext
-scroll-down         = bspwm-deskprev
-
-#█▓▒░
 #█▓▒░ bspwm Module
 [module/bspwm]
 type                      = internal/bspwm
@@ -168,7 +140,7 @@ label                     = "%date% %time%"
 type = internal/battery
 
 ; This is useful in case the battery never reports 100% charge
-full-at = 100
+full-at = 80
 
 ; Use the following command to list batteries and adapters:
 ; $ ls -1 /sys/class/power_supply/
@@ -196,7 +168,7 @@ label-discharging = %time%
 
 ; Only applies if <ramp-capacity> is used
 ramp-capacity-foreground  = ${colors.green}
-ramp-capacity-0 =
+ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
@@ -260,30 +232,18 @@ menu-3-1-exec = systemctl poweroff
 #█▓▒░ Blank character for | decoration
 menu-3-2     = ⠀
 
-menu-4-0      = Azure
-menu-4-0-exec = wal -i ~/scripts/setups/Azure/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-1      = Ganesha
-menu-4-1-exec = wal -i ~/scripts/setups/Ganesha/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-2      = Garden
-menu-4-2-exec = wal -i ~/scripts/setups/Garden/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-3      = Gas
-menu-4-3-exec = wal -i ~/scripts/setups/Gas/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-4      = Leaf
-menu-4-4-exec = wal -i ~/scripts/setups/Leaf/wallpaper.jpg -o /home/craig/scripts/spotipy -g & xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-5      = Rakshasa
-menu-4-5-exec = wal -i ~/scripts/setups/Rakshasa/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-6      = Sacred
-menu-4-6-exec = wal -i ~/scripts/setups/Sacred/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-7      = Sand
-menu-4-7-exec = wal -i ~/scripts/setups/Sand/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-8      = Seafoam
-menu-4-8-exec = wal -i ~/scripts/setups/Seafoam/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-9      = Tulip
-menu-4-9-exec = wal -i ~/scripts/setups/Tulip/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
-menu-4-10      = Wreck
-menu-4-10-exec = wal -i ~/scripts/setups/Wreck/wallpaper.jpg -o /home/craig/scripts/spotipy -g && xrdb -merge /home/craig/.cache/wal/colors.Xresources && /home/craig/scripts/bordercheck
+menu-4-0      = Garden
+menu-4-0-exec = wpg -s ~/scripts/setups/Garden.jpg && bash "$HOME/.config/bspwm/bspwm_colors.sh" &
+menu-4-1      = Rakshasa
+menu-4-1-exec = wpg -s ~/scripts/setups/Rakshasa.jpg
+menu-4-2      = Sacred
+menu-4-2-exec = wpg -s ~/scripts/setups/Sacred.jpg
+menu-4-3      = Tulip
+menu-4-3-exec = wpg -s ~/scripts/setups/Tulip.jpg
+menu-4-4      = Wreck
+menu-4-4-exec = wpg -s ~/scripts/setups/Wreck.jpg
 #█▓▒░ Blank character for | decoration
-menu-4-11     = ⠀
+menu-4-5     = ⠀
 
 
 #█▓▒░

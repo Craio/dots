@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Wreck.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0d1215",
+        "foreground": "#edffff",
+        "cursor": "#edffff"
+    },
+    "colors": {
+        "color0": "#0d1215",
+        "color1": "#67C5C1",
+        "color2": "#0B9BA4",
+        "color3": "#63ABA3",
+        "color4": "#018AAE",
+        "color5": "#517C85",
+        "color6": "#01ADC8",
+        "color7": "#bcd7d3",
+        "color8": "#0d1215",
+        "color9": "#72ffff",
+        "color10": "#02d3e0",
+        "color11": "#6fefe1",
+        "color12": "#01b3e2",
+        "color13": "#5baaba",
+        "color14": "#01e1ff",
+        "color15": "#edffff"
+    }
+}

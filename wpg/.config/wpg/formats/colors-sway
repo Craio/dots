@@ -1,0 +1,21 @@
+set $wallpaper /home/craig/.config/wpg/wallpapers/Sacred.jpg
+
+set $background #0d1215
+set $foreground #fffbfa
+
+set $color0 #0d1215
+set $color1 #BB6048
+set $color2 #6199A7
+set $color3 #D88C71
+set $color4 #477A85
+set $color5 #966057
+set $color6 #60A1B1
+set $color7 #cfc9c8
+set $color8 #0d1215
+set $color9 #ff724c
+set $color10 #6cd1ea
+set $color11 #ffab7d
+set $color12 #4fa7ba
+set $color13 #d27161
+set $color14 #6bdcf7
+set $color15 #fffbfa

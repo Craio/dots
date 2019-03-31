@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Garden.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0d1215",
+        "foreground": "#e2eafb",
+        "cursor": "#e2eafb"
+    },
+    "colors": {
+        "color0": "#0d1215",
+        "color1": "#8E9D32",
+        "color2": "#738C32",
+        "color3": "#95B04E",
+        "color4": "#616164",
+        "color5": "#4F4B4D",
+        "color6": "#71934C",
+        "color7": "#aab0bc",
+        "color8": "#0d1215",
+        "color9": "#c2d933",
+        "color10": "#9bc234",
+        "color11": "#c9f554",
+        "color12": "#71718e",
+        "color13": "#705764",
+        "color14": "#93cd54",
+        "color15": "#e2eafb"
+    }
+}

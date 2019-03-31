@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Rakshasa.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0d1215",
+        "foreground": "#fffff3",
+        "cursor": "#fffff3"
+    },
+    "colors": {
+        "color0": "#0d1215",
+        "color1": "#87795A",
+        "color2": "#6E8F43",
+        "color3": "#9FA639",
+        "color4": "#99936C",
+        "color5": "#A6A18C",
+        "color6": "#768F85",
+        "color7": "#d0ccbe",
+        "color8": "#0d1215",
+        "color9": "#bea266",
+        "color10": "#90c749",
+        "color11": "#dbe63b",
+        "color12": "#d7cb7b",
+        "color13": "#ebdda2",
+        "color14": "#88cab0",
+        "color15": "#fffff3"
+    }
+}

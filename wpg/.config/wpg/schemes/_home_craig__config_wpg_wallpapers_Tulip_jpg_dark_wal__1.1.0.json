@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Tulip.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0d1215",
+        "foreground": "#d5ffff",
+        "cursor": "#d5ffff"
+    },
+    "colors": {
+        "color0": "#0d1215",
+        "color1": "#D06B1A",
+        "color2": "#464D40",
+        "color3": "#D99837",
+        "color4": "#973124",
+        "color5": "#B26151",
+        "color6": "#A4571D",
+        "color7": "#9fc2c2",
+        "color8": "#0d1215",
+        "color9": "#ff8912",
+        "color10": "#5a6d4a",
+        "color11": "#ffc935",
+        "color12": "#d03622",
+        "color13": "#f87258",
+        "color14": "#e16f19",
+        "color15": "#d5ffff"
+    }
+}

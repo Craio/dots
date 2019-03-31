@@ -1,0 +1,23 @@
+" Special
+let wallpaper  = "/home/craig/.config/wpg/wallpapers/Sacred.jpg"
+let background = "#0d1215"
+let foreground = "#fffbfa"
+let cursor     = "#fffbfa"
+
+" Colors
+let color0  = "#0d1215"
+let color1  = "#BB6048"
+let color2  = "#6199A7"
+let color3  = "#D88C71"
+let color4  = "#477A85"
+let color5  = "#966057"
+let color6  = "#60A1B1"
+let color7  = "#cfc9c8"
+let color8  = "#0d1215"
+let color9  = "#ff724c"
+let color10 = "#6cd1ea"
+let color11 = "#ffab7d"
+let color12 = "#4fa7ba"
+let color13 = "#d27161"
+let color14 = "#6bdcf7"
+let color15 = "#fffbfa"
