@@ -1,7 +1,5 @@
 #! /bin/sh
-
 . "${HOME}/.config/wpg/formats/colors.sh"
-xrdb -merge ${HOME}/.cache/wal/colors.Xresources
 
 bspc config normal_border_color "$color0"
 bspc config active_border_color "$color2"

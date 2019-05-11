@@ -1,5 +1,4 @@
 #█▓▒░ Pywal
-cat /home/craig/.cache/wal/sequences
 
 ICO_DIRTY="*"
 ICO_AHEAD="↱"

@@ -12,4 +12,4 @@ rofi.padding:            15
 rofi.sidebar-mode:       false
 rofi.fullscreen:         false
 
-rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.theme: ~/dots/wpg/.config/wpg/formats/colors-rofi-dark.rasi
