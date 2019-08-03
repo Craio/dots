@@ -20,8 +20,8 @@ override-redirect = true
 
 
 #█▓▒░
-#█▓▒░ Bar
-[bar/laptop]
+#█▓▒░ Bar - Laptop
+[bar/DP-2]
 monitor             = ${env:MONITOR:DP-2}
 override-redirect   = true
 dpi                 = 144
@@ -46,6 +46,36 @@ padding-left        = 2
 padding-right       = 2
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
+
+
+#█▓▒░
+#█▓▒░ Bar - External
+[bar/HDMI-0]
+monitor             = ${env:MONITOR:HDMI-0}
+override-redirect   = true
+dpi                 = 144
+wm-restack          = bspwm
+width               = 98%
+height              = 2.5%
+radius              = 15%
+offset-x            = 1%
+offset-y            = 1.5%
+top                 = true
+fixed-center        = true
+background          = ${colors.background}
+foreground          = ${colors.foreground}
+font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
+font-1              = Lohit Hindi:size=9:antialias=true;0
+font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
+modules-left        = powermenu bspwm
+modules-center      = spotibar
+modules-right       = weather volumeTV battery network date dropbox
+spacing             = 2
+padding-left        = 2
+padding-right       = 2
+scroll-up           = bspwm-desknext
+scroll-down         = bspwm-deskprev
+
 
 #█▓▒░
 #█▓▒░ bspwm Module

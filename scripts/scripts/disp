@@ -1,0 +1,3 @@
+#!/bin/bash
+
+xrandr --output DP-2 --primary --mode 3840x2160 --rotate normal --output HDMI-0 --mode 3840x2160 --rotate normal --left-of DP-2

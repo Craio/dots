@@ -1,2 +1,2 @@
-export GDK_SCALE=2; java -jar /usr/share/runelite-launcher/Launcher.jar
+export GDK_SCALE=2; java -jar /usr/share/runelite-launcher/Launcher.jar --mode=OFF
 
