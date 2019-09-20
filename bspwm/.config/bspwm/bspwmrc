@@ -1,19 +1,16 @@
 #! /bin/sh
 #█▓▒░  monitor setting
 #xrandr --output LVDS-0 --auto --rotate normal --pos 0x0 --output DP-0 --auto --rotate normal --left-of LVDS-0 --output VGA-0 --right-of LVDS-0 &
-bash "$HOME/scripts/disp" &
 
 #█▓▒░
 #█▓▒░ relaunch programs
 
-#quickserve .cache/wal/ &&
 sxhkd &
 dropbox &
-dcompmgr --gl &
 bash "$HOME/scripts/mouse" &
 bash "$HOME/scripts/bars" &
 
-pulseeffects --gapplication-service &
+#pulseeffects --gapplication-service &
 
 #█▓▒░
 #█▓▒░ randomly set theme on load
