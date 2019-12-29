@@ -15,8 +15,8 @@ URxvt.lineSpace:   0
 URxvt.scrollBar: false
 URxvt.internalBorder: 10
 
-URxvt*scrollTtyOutput:      false                                                                                                                                                             
-URxvt*scrollWithBuffer:     true                                                                                                                                                              
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
 
 

@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/victoria-roberts-woBJcMbIryw-unsplash.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#030601",
+        "foreground": "#d5ffff",
+        "cursor": "#d5ffff"
+    },
+    "colors": {
+        "color0": "#030601",
+        "color1": "#3fb799",
+        "color2": "#319576",
+        "color3": "#4bc2a4",
+        "color4": "#499572",
+        "color5": "#4ac2a6",
+        "color6": "#53d3b7",
+        "color7": "#a8ead0",
+        "color8": "#2b3801",
+        "color9": "#43fccc",
+        "color10": "#31d09f",
+        "color11": "#50ffdd",
+        "color12": "#4fd195",
+        "color13": "#4effe2",
+        "color14": "#5afffb",
+        "color15": "#d5ffff"
+    }
+}

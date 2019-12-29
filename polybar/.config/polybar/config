@@ -1,3 +1,4 @@
+#█▓▒░ Set colors
 [colors]
 foreground=${xrdb:color7}
 background=${xrdb:color0}
@@ -15,22 +16,21 @@ white=#fafafa
 
 [global/wm]
 margin-top        = 0
-margin-bottom     = 0
+margin-bottom     = 25
 override-redirect = true
 
 
-#█▓▒░
 #█▓▒░ Bar - Laptop
 [bar/DP-2]
 monitor             = ${env:MONITOR:DP-2}
 override-redirect   = true
 dpi                 = 144
 wm-restack          = bspwm
-width               = 98%
-height              = 2.5%
-radius              = 15%
-offset-x            = 1%
-offset-y            = 1.5%
+width               = 100%
+height              = 2%
+radius              = 0%
+offset-x            = 0%
+offset-y            = 0%
 top                 = true
 fixed-center        = true
 background          = ${colors.background}
@@ -48,18 +48,17 @@ scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
 
-#█▓▒░
 #█▓▒░ Bar - External
 [bar/HDMI-0]
 monitor             = ${env:MONITOR:HDMI-0}
 override-redirect   = true
 dpi                 = 144
 wm-restack          = bspwm
-width               = 98%
-height              = 2.5%
-radius              = 15%
-offset-x            = 1%
-offset-y            = 1.5%
+width               = 100%
+height              = 2%
+radius              = 0%
+offset-x            = 0%
+offset-y            = 0%
 top                 = true
 fixed-center        = true
 background          = ${colors.background}
@@ -77,7 +76,6 @@ scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
 
-#█▓▒░
 #█▓▒░ bspwm Module
 [module/bspwm]
 type                      = internal/bspwm
@@ -103,16 +101,13 @@ label-empty-padding       = 1
 label-empty-font          = 1
 
 
-#█▓▒░
 #█▓▒░ Volume
 [module/volume]
 type                    = internal/alsa
-
 master-soundcard        = default
 speaker-soundcard       = default
 headphone-soundcard     = default
 master-mixer            = Master
-
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
@@ -126,16 +121,13 @@ label-muted             = muted
 label-muted-foreground  = ${colors.violet}
 
 
-#█▓▒░
 #█▓▒░ Volume - External
 [module/volumeTV]
 type                    = internal/alsa
-
 master-soundcard = default
 speaker-soundcard = default
 headphone-soundcard = default
 master-mixer = Master
-
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
@@ -149,7 +141,6 @@ label-muted             = muted
 label-muted-foreground  = ${colors.violet}
 
 
-#█▓▒░
 #█▓▒░ Date and Time
 [module/date]
 type                      = internal/date
@@ -164,47 +155,27 @@ format-padding            = 2
 label                     = "%date% %time%"
 
 
-#█▓▒░
 #█▓▒░ Battery
 [module/battery]
 type = internal/battery
-
-; This is useful in case the battery never reports 100% charge
-full-at = 80
-
-; Use the following command to list batteries and adapters:
-; $ ls -1 /sys/class/power_supply/
+full-at = 99
+# Use the following command to list batteries and adapters:
+# $ ls -1 /sys/class/power_supply/
 battery = BAT0
 adapter = AC
 poll-interval = 2
-
 time-format = %H:%M
-
 format-charging = <animation-charging><label-charging>
 format-discharging = <ramp-capacity><label-discharging>
 format-full = <ramp-capacity>
-
-; Available tokens:
-;   %percentage% (default)
-;   %time%
-;   %consumption% (shows current charge rate in watts)
 label-charging = %percentage%
-
-; Available tokens:
-;   %percentage% (default)
-;   %time%
-;   %consumption% (shows current discharge rate in watts)
 label-discharging = %time%
-
-; Only applies if <ramp-capacity> is used
 ramp-capacity-foreground  = ${colors.green}
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-
-; Only applies if <animation-charging> is used
 animation-charging-foreground  = ${colors.green}
 animation-charging-0 = 
 animation-charging-1 = 
@@ -214,7 +185,6 @@ animation-charging-4 = 
 animation-charging-framerate = 1000
 
 
-#█▓▒░
 #█▓▒░ Power Menu
 [module/powermenu]
 type                        = custom/menu
@@ -228,17 +198,14 @@ label-close-foreground      = ${colors.red}
 label-separator             = ⏽
 label-separator-foreground  = ${colors.unfocused}
 
-
 menu-0-0      = Logout
 menu-0-0-exec = menu-open-1
 menu-0-1      = Reboot
 menu-0-1-exec = menu-open-2
 menu-0-2      = Shutdown
 menu-0-2-exec = menu-open-3
-menu-0-3      = Theme
-menu-0-3-exec = menu-open-4
 #█▓▒░ Blank character for | decoration
-menu-0-4     = ⠀
+menu-0-3     = ⠀
 
 menu-1-0      = No
 menu-1-0-exec = menu-open-0
@@ -246,7 +213,6 @@ menu-1-1      = Yes
 menu-1-1-exec = bspc quit
 #█▓▒░ Blank character for | decoration
 menu-1-2     = ⠀
-
 
 menu-2-0      = No
 menu-2-0-exec = menu-open-0
@@ -262,23 +228,8 @@ menu-3-1-exec = systemctl poweroff
 #█▓▒░ Blank character for | decoration
 menu-3-2     = ⠀
 
-menu-4-0      = Garden
-menu-4-0-exec = wpg -s ~/scripts/setups/Garden.jpg && bash "$HOME/.config/bspwm/bspwm_colors.sh" &
-menu-4-1      = Rakshasa
-menu-4-1-exec = wpg -s ~/scripts/setups/Rakshasa.jpg
-menu-4-2      = Sacred
-menu-4-2-exec = wpg -s ~/scripts/setups/Sacred.jpg
-menu-4-3      = Tulip
-menu-4-3-exec = wpg -s ~/scripts/setups/Tulip.jpg
-menu-4-4      = Wreck
-menu-4-4-exec = wpg -s ~/scripts/setups/Wreck.jpg
-#█▓▒░ Blank character for | decoration
-menu-4-5     = ⠀
 
-
-#█▓▒░
 #█▓▒░ Backlight
-; To list available cards use: $ ls -1 /sys/class/backlight/
 [module/backlight]
 type              = internal/xbacklight
 card              = nvidia_0
@@ -288,9 +239,7 @@ label             = 
 label-foreground  = ${colors.yellow}
 
 
-#█▓▒░
 #█▓▒░ Wireless Network
-; To test interface: $ ls -1 /sys/class/net/
 [module/network]
 type                          = internal/network
 interface                     = wlp0s20f3
@@ -303,7 +252,6 @@ label-connected-foreground    = ${colors.cyan}
 label-disconnected-foreground = ${colors.red}
 
 
-#█▓▒░
 #█▓▒░ Dropbox
 [module/dropbox]
 type        = custom/script
@@ -315,7 +263,6 @@ click-left  = ~/scripts/barbox --toggle
 tail        = true
 
 
-#█▓▒░
 #█▓▒░ Weather
 [module/weather]
 type                      = custom/script
@@ -331,7 +278,6 @@ click-left                = xdg-open https://darksky.net/
 tail                      = true
 
 
-#█▓▒░
 #█▓▒░ Spotibar
 [module/spotibar]
 type              = custom/script
