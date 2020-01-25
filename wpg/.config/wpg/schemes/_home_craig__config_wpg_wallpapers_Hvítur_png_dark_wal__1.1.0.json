@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Hvítur.png",
+    "alpha": "100",
+
+    "special": {
+        "background": "#000000",
+        "foreground": "#ffffff",
+        "cursor": "#ffffff"
+    },
+    "colors": {
+        "color0": "#000000",
+        "color1": "#ffffff",
+        "color2": "#68b183",
+        "color3": "#bda014",
+        "color4": "#79a8c3",
+        "color5": "#da89b2",
+        "color6": "#54a5ff",
+        "color7": "#ffffff",
+        "color8": "#191919",
+        "color9": "#c1c1c1",
+        "color10": "#74f8a5",
+        "color11": "#ffd90c",
+        "color12": "#88dfff",
+        "color13": "#ff9be7",
+        "color14": "#57d5ff",
+        "color15": "#ffffff"
+    }
+}

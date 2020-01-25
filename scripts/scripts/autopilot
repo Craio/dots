@@ -1,0 +1,92 @@
+#! /bin/sh
+# Start Autopilot installer. Fully installs a complete working environment from a fresh install.
+set -e
+
+# keep track of the last executed command
+trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
+# echo an error message before exiting
+trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
+
+
+echo "#█▓▒░"
+echo "#█▓▒░	Autopilot "
+echo "#█▓▒░"
+
+while true
+do
+ read -r -p "#█▓▒░ Type "BEGIN" to start the installation: " input
+
+ case $input in
+     [B][E][G][I][N])
+
+
+# Refresh and upgrade pacman packages
+echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
+yay -Syu
+echo -e "#█▓▒░	DONE \n "
+
+# Install text editors
+echo -e "\n#█▓▒░	Installing editors: "
+yay -S atom micro-manjaro --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+# Install fonts
+echo -e "#█▓▒░	Installing fonts: "
+yay -S nerd-fonts-complete otf-sfmono ttf-indic-otf ttf-lohit-fonts --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+# Instll system
+echo -e "#█▓▒░	Installing system tools: "
+yay -S gtop htop stow pavucontrol gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+# Install browser
+echo -e "#█▓▒░	Installing browsers:  "
+yay -S firefox-nightly w3m tor-browser --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+# Install media
+echo -e "#█▓▒░	Installing media: "
+yay -S feh dropbox spotify spotify-tui playerctl lutris --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+# Install rice
+echo -e "#█▓▒░	Installing rice: "
+yay -S bspwm-git sxhkd-git wpgtk-git lxappearance rofi-git polybar-git i3lock-fancy-git --noconfirm > /dev/null
+echo -e "#█▓▒░	DONE \n"
+
+
+
+
+
+# Stow Dotfiles
+echo -e "\n#█▓▒░	Stowing dotfiles "
+cd ~/dots
+stow bspwm compton polybar rofi scripts sxhkd wpg X zsh
+cd ~
+echo -e "#█▓▒░	DONE \n"
+
+# Make wpg install gtk & bspwm templates
+echo -e "\n#█▓▒░	Setting wpg themes "
+wp-install.sh -g -b
+echo -e "#█▓▒░	DONE \n"
+
+
+echo -e "\n#█▓▒░	Starting and enabling systemctl services "
+sudo systemctl start tlp.service
+sudo systemctl enable tlp.service
+sudo systemctl start tlp-sleep.service
+sudo systemctl enable tlp-sleep.service
+
+
+
+ ;;
+
+ 	[qQ])
+exit
+ ;;
+     *)
+ echo "Try that one again."
+ ;;
+ esac
+done

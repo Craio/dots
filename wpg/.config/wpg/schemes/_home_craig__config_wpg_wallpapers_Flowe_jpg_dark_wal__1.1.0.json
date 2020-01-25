@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/craig/.config/wpg/wallpapers/Flowe.jpg",
+    "alpha": "100",
+
+    "special": {
+        "background": "#0E1D26",
+        "foreground": "#ffdaff",
+        "cursor": "#ffdaff"
+    },
+    "colors": {
+        "color0": "#0E1D26",
+        "color1": "#AC414B",
+        "color2": "#304C4C",
+        "color3": "#AD9366",
+        "color4": "#665293",
+        "color5": "#991F50",
+        "color6": "#55635F",
+        "color7": "#d6a6c4",
+        "color8": "#1b384b",
+        "color9": "#ef4554",
+        "color10": "#366a6a",
+        "color11": "#f2c372",
+        "color12": "#7e5bcd",
+        "color13": "#d21c65",
+        "color14": "#628c80",
+        "color15": "#ffdaff"
+    }
+}

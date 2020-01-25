@@ -18,3 +18,4 @@ alias disks='echo "╓───── m o u n t . p o i n t s"; echo "╙──�
 alias gaming="sudo cpupower frequency-set -g performance"
 alias gamingoff="sudo cpupower frequency-set -g powersave"
 alias tempwatch="while :; do sensors; sleep 1 && clear; done;"
+alias lyrics="spotify-lyrics"
