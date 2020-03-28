@@ -7,7 +7,6 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
 trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
 
-
 echo "#█▓▒░"
 echo "#█▓▒░	Autopilot "
 echo "#█▓▒░"
@@ -19,66 +18,90 @@ do
  case $input in
      [B][E][G][I][N])
 
-
 # Refresh and upgrade pacman packages
 echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
 yay -Syu
 echo -e "#█▓▒░	DONE \n "
 
+# Stow Dotfiles
+echo -e "\n#█▓▒░	Stowing dotfiles "
+cd ~/dots
+stow bspwm compton polybar rofi scripts spicetify sxhkd wpg X zsh
+cd ~
+echo -e "#█▓▒░	DONE \n"
+
 # Install text editors
 echo -e "\n#█▓▒░	Installing editors: "
-yay -S atom micro-manjaro --noconfirm > /dev/null
+yay -S atom micro-manjaro --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install fonts
 echo -e "#█▓▒░	Installing fonts: "
-yay -S nerd-fonts-complete otf-sfmono ttf-indic-otf ttf-lohit-fonts --noconfirm > /dev/null
+yay -S nerd-fonts-complete otf-sfmono ttf-lohit-fonts --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
-# Instll system
+# Insatll system tools
 echo -e "#█▓▒░	Installing system tools: "
-yay -S gtop htop stow pavucontrol gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git --noconfirm > /dev/null
+yay -S gtop htop stow pavucontrol gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
-# Install browser
+# Install browsers
 echo -e "#█▓▒░	Installing browsers:  "
-yay -S firefox-nightly w3m tor-browser --noconfirm > /dev/null
+#yay -S firefox-nightly w3m tor-browser --noconfirm
+yay -S firefox-nightly w3m tor-browser --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install media
 echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox spotify spotify-tui playerctl lutris --noconfirm > /dev/null
+yay -S feh dropbox discord spotify playerctl lutris --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install rice
 echo -e "#█▓▒░	Installing rice: "
-yay -S bspwm-git sxhkd-git wpgtk-git lxappearance rofi-git polybar-git i3lock-fancy-git --noconfirm > /dev/null
+yay -S bspwm-git sxhkd-git wpgtk-git lxappearance rofi-git polybar-git i3lock-color spicetify-cli --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
+# Install extras
+#echo -e "#█▓▒░	Installing extras: "
+#yay -S tor-browser --noconfirm
+#echo -e "#█▓▒░	DONE \n"
 
-
-
-
-# Stow Dotfiles
-echo -e "\n#█▓▒░	Stowing dotfiles "
-cd ~/dots
-stow bspwm compton polybar rofi scripts sxhkd wpg X zsh
-cd ~
+echo -e "\n#█▓▒░	Changing default shell "
+chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
 echo -e "#█▓▒░	DONE \n"
 
 # Make wpg install gtk & bspwm templates
 echo -e "\n#█▓▒░	Setting wpg themes "
-wp-install.sh -g -b
+wpg-install.sh -g -b -r
 echo -e "#█▓▒░	DONE \n"
 
+echo -e "\n#█▓▒░	Set up spicetify "
+sudo chmod 777 /opt/spotify -R
+spicetify backup apply enable-devtool
+spicetify update
+echo -e "#█▓▒░	DONE \n"
+
+echo -e "\n#█▓▒░	Install Pywalfox "
+git clone https://github.com/Frewacom/Pywalfox.git
+chmod +x  Pywalfox/setup.sh
+./Pywalfox/setup.sh
+echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Starting and enabling systemctl services "
 sudo systemctl start tlp.service
 sudo systemctl enable tlp.service
 sudo systemctl start tlp-sleep.service
 sudo systemctl enable tlp-sleep.service
+sudo systemctl start intel-undervolt.service
+sudo systemctl enable intel-undervolt.service
+echo -e "#█▓▒░	DONE \n"
 
-
+echo -e "\n#█▓▒░	Linking some config files "
+sudo ln -s /home/craig/scripts/autopilotfiles/jre.sh /etc/profile.d/jre.sh
+sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
+sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
+echo -e "#█▓▒░	DONE \n"
 
  ;;
 

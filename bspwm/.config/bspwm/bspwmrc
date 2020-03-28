@@ -5,7 +5,8 @@
 #█▓▒░ relaunch programs
 wpg -m &
 sxhkd &
-dropbox
+spicetify update &
+dropbox & 
 bash "$HOME/scripts/mouse" &
 bash "$HOME/scripts/bars" &
 
@@ -18,7 +19,7 @@ bspc monitor HDMI-0 -d ० ० ० ० ०
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
-bspc config border_width         4
+bspc config border_width         3
 bspc config window_gap           15
 bspc config top_padding          45
 bspc config bottom_padding       0
