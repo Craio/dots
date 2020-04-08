@@ -1,3 +1,0 @@
-#!/bin/bash
-source "$HOME/dots/wpg/.config/wpg/formats/colors.sh"
-i3lock --force-clock -e -B=8 --composite --indpos="x+80:h-80" --timepos="x+2400:h-40" --insidecolor="$color1"ff --ringcolor="$color1"ff --line-uses-inside --keyhlcolor="$color0"ff --bshlcolor=$color0"ff" --insidevercolor="$color1"ff --ringvercolor="$color1"ff --ringwrongcolor="$color0"ff --insidewrongcolor="$color0"ff --radius=50 --ring-width=5 --noinputtext=" " --veriftext=" " --verifcolor="$color7"ff --wrongtext=" " --wrongcolor="$color0"ff --timestr="%-I:%M" --datestr=" " --timecolor="$color7"ff --timesize=80

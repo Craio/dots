@@ -1,17 +1,27 @@
-rofi.font:                          SF Mono 10
-rofi.hide-scrollbar:                true
-rofi.eh:                            1
-rofi.line-margin:                   0
-rofi.bw:                            0
-rofi.dpi:                           144
-rofi.separator-style:               none
-rofi.auto-select:                   false
-rofi.color-enabled:                 true
-rofi.width:                         25
-rofi.lines:                         8
-rofi.color-normal:                  #0E1D26, #ffdaff, #0E1D26, #4e6f66, #ffdaff
-rofi.color-urgent:                  #0E1D26, #d6b48d, #22231D, #d6b48d, #ffdaff
-rofi.color-active:                  #0E1D26, #628c80, #0E1D26, #628c80, #0E1D26
-rofi.color-window:                  #0E1D26, #4e6f66, #354c46
-rofi.location:                      0
-rofi.padding:                       15
+rofi.modi:                           window,run,ssh
+rofi.width:                          50
+rofi.lines:                          15
+rofi.columns:                        1
+rofi.font:                           roboto mono 10
+rofi.color-normal:                   #0E1D26, #ffdaff, #0E1D26, #a71650, #ffdaff
+rofi.color-urgent:                   #0E1D26, #d6b48d, #22231D, #d6b48d, #ffdaff
+rofi.color-active:                   #0E1D26, #628c80, #0E1D26, #628c80, #0E1D26
+rofi.color-window:                   #0E1D26, #a71650, #730f37
+rofi.bw:                             5
+rofi.location:                       0
+rofi.padding:                        5
+rofi.yoffset:                        0
+rofi.xoffset:                        0
+rofi.fixed-num-lines:                true
+rofi.terminal:                       rofi-sensible-terminal
+rofi.ssh-client:                     ssh
+rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+rofi.run-command:                    {cmd}
+rofi.parse-hosts:                    true
+rofi.matching:                       normal
+rofi.separator-style:                none
+rofi.scrollbar-width:                0
+rofi.kb-mode-next:                   Shift+Right,Control+Tab,Alt+l
+rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab,Alt+h
+rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab,Alt+k
+rofi.kb-row-down:                    Down,Control+n,Alt+j

@@ -78,17 +78,14 @@ super + minus
 #█▓▒░ Extras
 # Lock the session.
 super + l
-  bash ~/scripts/lock
+  bash betterlockscreen -l
 
 Print
 	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
 
-super + Print
-	scrot -u '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/RS/'
-
 #	Reload bspwm
 XF86Tools
-	./.config/bspwm/bspwmrc
+	bash .config/bspwm/bspwmrc
 
 #	Mute speaker volume
 XF86AudioMute
@@ -114,7 +111,8 @@ XF86AudioNext
 
 # Expand/contract bspwm's window gaps.
 super + alt + Up
-	bspc config window_gap {150,135,120,105,90,75,60,45,30,15}
+#	bspc config window_gap {150,135,120,105,90,75,60,45,30,15}
+	bspc config window_gap 10
 
 super + alt + Down
 	bspc config window_gap {15,30,45,60,75,90,105,120,135,150}

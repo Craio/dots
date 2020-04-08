@@ -8,8 +8,11 @@ trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
 
 echo "#█▓▒░"
-echo "#█▓▒░	Autopilot "
 echo "#█▓▒░"
+echo "#█▓▒░		Autopilot "
+echo "#█▓▒░"
+echo "#█▓▒░"
+
 
 while true
 do
@@ -23,10 +26,19 @@ echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
 yay -Syu
 echo -e "#█▓▒░	DONE \n "
 
+
+
+# Insatll system tools
+echo -e "#█▓▒░	Installing system tools: "
+yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xorg-xsetroot --noconfirm
+echo -e "#█▓▒░	DONE \n"
+
+
+
 # Stow Dotfiles
 echo -e "\n#█▓▒░	Stowing dotfiles "
 cd ~/dots
-stow bspwm compton polybar rofi scripts spicetify sxhkd wpg X zsh
+stow bspwm picom polybar rofi scripts spicetify sxhkd wpg X zsh
 cd ~
 echo -e "#█▓▒░	DONE \n"
 
@@ -35,30 +47,20 @@ echo -e "\n#█▓▒░	Installing editors: "
 yay -S atom micro-manjaro --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
-# Install fonts
-echo -e "#█▓▒░	Installing fonts: "
-yay -S nerd-fonts-complete otf-sfmono ttf-lohit-fonts --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-# Insatll system tools
-echo -e "#█▓▒░	Installing system tools: "
-yay -S gtop htop stow pavucontrol gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
 # Install browsers
 echo -e "#█▓▒░	Installing browsers:  "
 #yay -S firefox-nightly w3m tor-browser --noconfirm
-yay -S firefox-nightly w3m tor-browser --noconfirm
+yay -S firefox-nightly w3m --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install media
 echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox discord spotify playerctl lutris --noconfirm
+yay -S feh dropbox spotify playerctl lutris --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install rice
 echo -e "#█▓▒░	Installing rice: "
-yay -S bspwm-git sxhkd-git wpgtk-git lxappearance rofi-git polybar-git i3lock-color spicetify-cli --noconfirm
+yay -S bspwm-rounded-corners betterlockscreen sxhkd-git wpgtk-git lxappearance rofi-git polybar-git spicetify-cli --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install extras
@@ -77,31 +79,68 @@ wpg-install.sh -g -b -r
 echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Set up spicetify "
-sudo chmod 777 /opt/spotify -R
-spicetify backup apply enable-devtool
-spicetify update
+#sudo chmod 777 /opt/spotify -R
+#spicetify backup apply enable-devtool
+#spicetify update
 echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Install Pywalfox "
-git clone https://github.com/Frewacom/Pywalfox.git
-chmod +x  Pywalfox/setup.sh
-./Pywalfox/setup.sh
+#git clone https://github.com/Frewacom/Pywalfox.git
+#chmod +x  Pywalfox/setup.sh
+#cd Pywalfox
+#bash setup.sh
 echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Starting and enabling systemctl services "
-sudo systemctl start tlp.service
-sudo systemctl enable tlp.service
-sudo systemctl start tlp-sleep.service
-sudo systemctl enable tlp-sleep.service
-sudo systemctl start intel-undervolt.service
-sudo systemctl enable intel-undervolt.service
+sudo systemctl start tlp.service intel-undervolt.service ly.service
+sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
+# setup ly
+sudo systemctl disable getty@tty2.service
 echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Linking some config files "
+echo -e "\n#█▓▒░	Removing and Linking some config files "
+sudo rm /etc/profile.d/jre.sh
+sudo rm /etc/intel-undervolt.conf
+sudo rm /etc/tlp.conf
+sudo rm /etc/ly/config.ini
+
 sudo ln -s /home/craig/scripts/autopilotfiles/jre.sh /etc/profile.d/jre.sh
 sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
 sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
+sudo ln -s /home/craig/scritps/autopilotfiles/config.ini /etc/ly/config.ini
+
 echo -e "#█▓▒░	DONE \n"
+
+# Install fonts
+echo -e "#█▓▒░	Installing fonts: "
+yay -S otf-sfmono cozette-otb ttf-lohit-fonts nerd-fonts-complete --noconfirm
+echo -e "#█▓▒░	DONE \n"
+
+
+
+
+# Install fonts
+echo -e "#█▓▒░	Installing extras: "
+yay -S zsh-autosugestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
+echo -e "#█▓▒░	DONE \n"
+
+# Remove some things
+#echo -e "#█▓▒░	Remove things "
+#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
+# --noconfirm
+#echo -e "#█▓▒░	DONE \n"
+
+clear
+echo -e "#█▓▒░ 				Install Completed"
+echo -e "#█▓▒░	"
+echo -e "#█▓▒░ 	"
+echo -e "#█▓▒░	Reminders:"
+echo -e "#█▓▒░ 		-	Finish Dropbox setup."
+echo -e "#█▓▒░ 		-	Logout and load up bspwm"
+echo -e "#█▓▒░ 	"
+echo -e "#█▓▒░ 	"
+echo -e "#█▓▒░ 	"
+echo -e "#█▓▒░ 	"
 
  ;;
 
