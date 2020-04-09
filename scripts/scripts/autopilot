@@ -26,14 +26,10 @@ echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
 yay -Syu
 echo -e "#█▓▒░	DONE \n "
 
-
-
 # Insatll system tools
 echo -e "#█▓▒░	Installing system tools: "
-yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xorg-xsetroot --noconfirm
+yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xorg-xsetroot zsh --noconfirm
 echo -e "#█▓▒░	DONE \n"
-
-
 
 # Stow Dotfiles
 echo -e "\n#█▓▒░	Stowing dotfiles "
@@ -108,20 +104,16 @@ sudo ln -s /home/craig/scripts/autopilotfiles/jre.sh /etc/profile.d/jre.sh
 sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
 sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
 sudo ln -s /home/craig/scritps/autopilotfiles/config.ini /etc/ly/config.ini
+echo -e "#█▓▒░	DONE \n"
 
+# Install extras
+echo -e "#█▓▒░	Installing extras: "
+yay -S zsh-autosugestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install fonts
 echo -e "#█▓▒░	Installing fonts: "
 yay -S otf-sfmono cozette-otb ttf-lohit-fonts nerd-fonts-complete --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-
-
-
-# Install fonts
-echo -e "#█▓▒░	Installing extras: "
-yay -S zsh-autosugestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Remove some things
