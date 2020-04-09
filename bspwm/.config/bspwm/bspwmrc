@@ -41,3 +41,4 @@ bash "$HOME/scripts/bars" &
 
 #█▓▒░ set bspwm border colors from wpgtk
 bash /home/craig/.config/bspwm/bspwm_colors.sh &
+bash /home/craig/.config/bspwm/bspwm_colors.sh &bash /home/craig/.config/bspwm/bspwm_colors.sh &bash /home/craig/.config/bspwm/bspwm_colors.sh &bash /home/craig/.config/bspwm/bspwm_colors.sh &

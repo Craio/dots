@@ -40,7 +40,7 @@ echo -e "#█▓▒░	DONE \n"
 
 # Install text editors
 echo -e "\n#█▓▒░	Installing editors: "
-yay -S atom micro-manjaro --noconfirm
+#yay -S atom micro --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install browsers
@@ -87,12 +87,21 @@ echo -e "\n#█▓▒░	Install Pywalfox "
 #bash setup.sh
 echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Starting and enabling systemctl services "
-sudo systemctl start tlp.service intel-undervolt.service ly.service
-sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
-# setup ly
-sudo systemctl disable getty@tty2.service
+# Install extras
+echo -e "#█▓▒░	Installing extras: "
+yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
 echo -e "#█▓▒░	DONE \n"
+
+# Install fonts
+echo -e "#█▓▒░	Installing fonts: "
+yay -S otf-sfmono cozette-otb lohit-fonts nerd-fonts-complete --noconfirm
+echo -e "#█▓▒░	DONE \n"
+
+# Remove some things
+#echo -e "#█▓▒░	Remove things "
+#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
+# --noconfirm
+#echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Removing and Linking some config files "
 sudo rm /etc/profile.d/jre.sh
@@ -106,22 +115,6 @@ sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
 sudo ln -s /home/craig/scritps/autopilotfiles/config.ini /etc/ly/config.ini
 echo -e "#█▓▒░	DONE \n"
 
-# Install extras
-echo -e "#█▓▒░	Installing extras: "
-yay -S zsh-autosugestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-# Install fonts
-echo -e "#█▓▒░	Installing fonts: "
-yay -S otf-sfmono cozette-otb ttf-lohit-fonts nerd-fonts-complete --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-# Remove some things
-#echo -e "#█▓▒░	Remove things "
-#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
-# --noconfirm
-#echo -e "#█▓▒░	DONE \n"
-
 clear
 echo -e "#█▓▒░ 				Install Completed"
 echo -e "#█▓▒░	"
@@ -133,6 +126,14 @@ echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
+
+echo -e "\n#█▓▒░	Starting and enabling systemctl services "
+sudo systemctl start tlp.service intel-undervolt.service ly.service
+sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
+# setup ly
+sudo systemctl disable getty@tty2.service
+echo -e "#█▓▒░	DONE \n"
+
 
  ;;
 
