@@ -1,3 +1,3 @@
 #!/bin/bash
 
-export GDK_SCALE=2; ./Downloads/RuneLite.AppImage
+export GDK_SCALE=2; optirun ./Downloads/RuneLite.AppImage --mode=OFF
