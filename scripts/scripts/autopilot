@@ -28,7 +28,7 @@ echo -e "#█▓▒░	DONE \n "
 
 # Insatll system tools
 echo -e "#█▓▒░	Installing system tools: "
-yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xorg-xsetroot zsh --noconfirm
+yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xclip xorg-xsetroot zsh --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Stow Dotfiles
@@ -40,7 +40,7 @@ echo -e "#█▓▒░	DONE \n"
 
 # Install text editors
 echo -e "\n#█▓▒░	Installing editors: "
-yay -S atom micro-manjaro --noconfirm
+#yay -S atom micro --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install browsers
@@ -51,7 +51,7 @@ echo -e "#█▓▒░	DONE \n"
 
 # Install media
 echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox spotify playerctl lutris --noconfirm
+yay -S feh dropbox spotify playerctl --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
 # Install rice
@@ -87,14 +87,24 @@ echo -e "\n#█▓▒░	Install Pywalfox "
 #bash setup.sh
 echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Starting and enabling systemctl services "
-sudo systemctl start tlp.service intel-undervolt.service ly.service
-sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
-# setup ly
-sudo systemctl disable getty@tty2.service
+# Install extras
+echo -e "#█▓▒░	Installing extras: "
+yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
 echo -e "#█▓▒░	DONE \n"
 
+# Install fonts
+echo -e "#█▓▒░	Installing fonts: "
+yay -S otf-sfmono cozette-otb lohit-fonts nerd-fonts-complete --noconfirm
+echo -e "#█▓▒░	DONE \n"
+
+# Remove some things
+#echo -e "#█▓▒░	Remove things "
+#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
+# --noconfirm
+#echo -e "#█▓▒░	DONE \n"
+
 echo -e "\n#█▓▒░	Removing and Linking some config files "
+sudo touch /etc/profile.d/jre.sh
 sudo rm /etc/profile.d/jre.sh
 sudo rm /etc/intel-undervolt.conf
 sudo rm /etc/tlp.conf
@@ -133,6 +143,14 @@ echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
 echo -e "#█▓▒░ 	"
+
+echo -e "\n#█▓▒░	Starting and enabling systemctl services "
+sudo systemctl start tlp.service intel-undervolt.service ly.service
+sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
+# setup ly
+sudo systemctl disable getty@tty2.service
+echo -e "#█▓▒░	DONE \n"
+
 
  ;;
 

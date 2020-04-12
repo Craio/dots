@@ -12,6 +12,7 @@ xsetroot -cursor_name left_ptr &
 
 #█▓▒░ bspwm settings // ० ० ० ० ०
 bspc monitor DP-2 -d एक दो तीन चार पांच
+bspc monitor eDP1 -d एक दो तीन चार पांच
 bspc monitor HDMI-0 -d ० ० ० ० ०
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
