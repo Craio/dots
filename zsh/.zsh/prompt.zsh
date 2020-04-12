@@ -7,7 +7,6 @@ ICO_DIVERGED="⥮"
 COLOR_ROOT="%F{red}"
 COLOR_USER="%F{green}"
 COLOR_NORMAL="%F{white}"
-PROMPT_STYLE="classic"
 
 #█▓▒░ Allow functions in the prompt
 setopt PROMPT_SUBST
@@ -52,7 +51,6 @@ GIT_PROMPT() {
   esac
 }
 case "$PROMPT_STYLE" in
-#█▓▒░ Classic
 *)
 PROMPT='${USER_LEVEL}[${COLOR_NORMAL}%~${USER_LEVEL}]$(GIT_PROMPT)── ─ %f'
 ;;

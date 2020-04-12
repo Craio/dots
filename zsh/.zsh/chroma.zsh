@@ -1,10 +1,10 @@
-#█▓▒░ Source the plugin https://github.com/zsh-users/zsh-syntax-highlighting
+#█▓▒░ Source plugins
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 
-#█▓▒░ Color overrides
-ZSH_HIGHLIGHT_STYLES[default]='fg=red'
+#█▓▒░ color overrides
+ZSH_HIGHLIGHT_STYLES[default]='none'
 ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red'
 ZSH_HIGHLIGHT_STYLES[reserved-word]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[alias]='fg=blue'
@@ -26,4 +26,4 @@ ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=yellow'
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]='fg=cyan'
-ZSH_HIGHLIGHT_STYLES[assign]='fg=red'
+ZSH_HIGHLIGHT_STYLES[assign]='none'
