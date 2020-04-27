@@ -1,5 +1,4 @@
 # dots
-Install with  `stow`
 
 
 ## Example

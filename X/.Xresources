@@ -5,7 +5,7 @@ Xft.rgba: rgb
 Xft.antialias: true
 Xft.dpi: 144
 
-URxvt.font: xft: SF Mono:style=Regular:size=10,\Siji:style=Regular:size=10
+URxvt.font: xft: Fantasque Sans Mono:style=Regular:size=12
 ! Font Spacing
 URxvt.letterSpace: 0
 URxvt.lineSpace:   0

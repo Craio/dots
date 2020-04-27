@@ -1,28 +1,29 @@
 #█▓▒░ Set colors
 [colors]
-foreground=${xrdb:color7}
-background=${xrdb:color0}
-power=${xrdb:color5}
-focused=${xrdb:color7}
-unfocused=${xrdb:color4}
+foreground          = ${xrdb:color7}
+background          = ${xrdb:color0}
+power               = ${xrdb:color5}
+focused             = ${xrdb:color7}
+unfocused           = ${xrdb:color4}
 
-red=#cc4a4a
-green=#90BD39
-yellow=#F09F41
-blue=#2A7ABE
-violet=#a763bb
-cyan=#18BEA8
-white=#fafafa
+red                 = #cc4a4a
+green               = #90BD39
+yellow              = #F09F41
+blue                = #2A7ABE
+violet              = #a763bb
+cyan                = #18BEA8
+white               = #fafafa
 
 [global/wm]
-margin-top        = 0
-margin-bottom     = 25
-override-redirect = true
+margin-top           = 0
+margin-bottom        = 25
+override-redirect    = true
 
 
 #█▓▒░ Bar - Laptop
-[bar/DP-2]
-monitor             = ${env:MONITOR:DP-2}
+[bar/eDP-1]
+monitor             = ${env:MONITOR:}
+monitor-strict      = false
 enable-ipc          = true
 override-redirect   = true
 dpi                 = 144
@@ -37,11 +38,13 @@ fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
 font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
-font-1              = Lohit Hindi:size=9:antialias=true;0
-font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
+font-1              = Lohit Hindi:style=Regular:size=10:antialias=true;0
+font-2              = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:size=10:antialias=true;0
+font-3              = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=10:antialias=true;0
+font-4              = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=10:antialias=true;0
 modules-left        = powermenu bspwm
 modules-center      = spotibar
-modules-right       = runelite weather backlight volume battery network date dropbox
+modules-right       = runelite weather backlight pulseaudio battery network date dropbox
 spacing             = 2
 padding-left        = 2
 padding-right       = 2
@@ -51,7 +54,8 @@ scroll-down         = bspwm-deskprev
 
 #█▓▒░ Bar - External
 [bar/HDMI-0]
-monitor             = ${env:MONITOR:HDMI-0}
+monitor             = ${env:MONITOR:}
+monitor-strict      = false
 override-redirect   = true
 dpi                 = 144
 wm-restack          = bspwm
@@ -65,8 +69,8 @@ fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
 font-0              = SF Mono:style=Regular:pixelsize=11:antialias=true;0
-font-1              = Lohit Hindi:size=9:antialias=true;0
-font-2              = MesloLGS Nerd Font:size=13:antialias=true;0
+font-1              = Lohit Hindi:style=Regular:size=11:antialias=true;0
+font-2              = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:size=11:antialias=true;0
 modules-left        = powermenu bspwm
 modules-center      = spotibar
 modules-right       = runelite weather volumeTV battery network date dropbox
@@ -87,19 +91,19 @@ reverse-scroll            = false
 label-focused             = %name%
 label-focused-foreground  = ${colors.focused}
 label-focused-padding     = 1
-label-focused-font        = 1
+label-focused-font        = 2
 label-occupied            = %name%
 label-occupied-foreground = ${colors.unfocused}
 label-occupied-padding    = 1
-label-occupied-font       = 1
+label-occupied-font       = 2
 label-urgent              = %name%
 label-urgent-foreground   = ${colors.red}
 label-urgent-padding      = 1
-label-urgent-font         = 1
+label-urgent-font         = 2
 label-empty               = %name%
 label-empty-foreground    = ${colors.background}
 label-empty-padding       = 1
-label-empty-font          = 1
+label-empty-font          = 2
 
 
 #█▓▒░ Volume
@@ -112,7 +116,7 @@ master-mixer            = Master
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
-ramp-volume-0           = 
+ramp-volume-0           = 
 ramp-volume-1           = 
 ramp-volume-2           = 
 ramp-volume-foreground  = ${colors.violet}
@@ -125,14 +129,14 @@ label-muted-foreground  = ${colors.violet}
 #█▓▒░ Volume - External
 [module/volumeTV]
 type                    = internal/alsa
-master-soundcard = default
-speaker-soundcard = default
-headphone-soundcard = default
-master-mixer = Master
+master-soundcard        = default
+speaker-soundcard       = default
+headphone-soundcard     = default
+master-mixer            = Master
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 module-margin-right     = 0
-ramp-volume-0           = 
+ramp-volume-0           = 
 ramp-volume-1           = 
 ramp-volume-2           = 
 ramp-volume-foreground  = ${colors.violet}
@@ -140,6 +144,32 @@ label-volume            = %percentage%
 label-muted-padding     = 2
 label-muted             = muted
 label-muted-foreground  = ${colors.violet}
+
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+use-ui-max = false
+interval = 5
+
+format-volume = <ramp-volume><label-volume>
+format-volume-padding   = 2
+ramp-volume-foreground  = ${colors.violet}
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+click-right = pavucontrol &
+click-middle = blueman-manager
+label-volume = %percentage%%
+
+label-muted-padding     = 2
+label-muted             =  muted
+label-muted-foreground  = ${colors.red}
+
 
 
 #█▓▒░ Date and Time
@@ -150,7 +180,7 @@ date                      =
 date-alt                  = " %A %d %B"
 time                      = "%I:%M"
 time-alt                  = "%I:%M:%S"
-format-prefix             = 
+format-prefix             = 
 format-prefix-foreground  = ${colors.power}
 format-padding            = 2
 label                     = "%date% %time%"
@@ -158,31 +188,31 @@ label                     = "%date% %time%"
 
 #█▓▒░ Battery
 [module/battery]
-type = internal/battery
-full-at = 99
+type                      = internal/battery
+full-at                   = 99
 # Use the following command to list batteries and adapters:
 # $ ls -1 /sys/class/power_supply/
-battery = BAT0
-adapter = AC
-poll-interval = 2
-time-format = %H:%M
-format-charging = <animation-charging><label-charging>
-format-discharging = <ramp-capacity><label-discharging>
-format-full = <ramp-capacity>
-label-charging = %percentage%
-label-discharging = %time%
+battery                   = BAT0
+adapter                   = AC
+poll-interval             = 2
+time-format               = %H:%M
+format-charging           = <animation-charging><label-charging>
+format-discharging        = <ramp-capacity><label-discharging>
+format-full               = <ramp-capacity>
+label-charging            = %percentage%
+label-discharging         = %time%
 ramp-capacity-foreground  = ${colors.green}
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+ramp-capacity-0           = 
+ramp-capacity-1           = 
+ramp-capacity-2           = 
+ramp-capacity-3           = 
+ramp-capacity-4           = 
 animation-charging-foreground  = ${colors.green}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+animation-charging-0      = 
+animation-charging-1      = 
+animation-charging-2      = 
+animation-charging-3      = 
+animation-charging-4      = 
 animation-charging-framerate = 1000
 
 
@@ -193,7 +223,7 @@ label-open                  = 
 label-open-foreground       = ${colors.power}
 label-open-background       = ${colors.background}
 label-open-padding          = 1
-label-close                 = 
+label-close                 = 
 label-close-padding         = 1
 label-close-foreground      = ${colors.red}
 label-separator             = ⏽
@@ -206,38 +236,80 @@ menu-0-1-exec = menu-open-2
 menu-0-2      = Shutdown
 menu-0-2-exec = menu-open-3
 #█▓▒░ Blank character for | decoration
-menu-0-3     = ⠀
+menu-0-3      = ⠀
 
 menu-1-0      = No
 menu-1-0-exec = menu-open-0
 menu-1-1      = Yes
 menu-1-1-exec = bspc quit
 #█▓▒░ Blank character for | decoration
-menu-1-2     = ⠀
+menu-1-2       = ⠀
 
 menu-2-0      = No
 menu-2-0-exec = menu-open-0
 menu-2-1      = Yes
 menu-2-1-exec = systemctl reboot
 #█▓▒░ Blank character for | decoration
-menu-2-2     = ⠀
+menu-2-2      = ⠀
 
 menu-3-0      = No
 menu-3-0-exec = menu-open-0
 menu-3-1      = Yes
 menu-3-1-exec = systemctl poweroff
 #█▓▒░ Blank character for | decoration
-menu-3-2     = ⠀
+menu-3-2      = ⠀
 
 
 #█▓▒░ Backlight
 [module/backlight]
-type              = internal/xbacklight
-card              = nvidia_0
+type              = internal/backlight
+card              = intel_backlight
 format            = <label>
 format-padding    = 0
-label             = 
+label             = 
 label-foreground  = ${colors.yellow}
+enable-scroll     = true
+
+
+
+[module/xbacklight]
+type = internal/xbacklight
+
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = eDP-1
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+enable-scroll = true
+; Available tags:
+;   <label> (default)
+;   <ramp>
+;   <bar>
+format = <label>
+
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
+bar-fill = ─
+bar-empty = ─
+
+
+
+
+
+
 
 
 #█▓▒░ Wireless Network
@@ -268,12 +340,12 @@ tail        = true
 [module/weather]
 type                      = custom/script
 exec                      = ~/scripts/weather
-interval                  = 120
+interval                  = 300
 format                    = <label>
 format-padding            = 2
 format-prefix             = "  "
 format-suffix             = "°"
-format-prefix-foreground  = ${colors.foreground}
+format-prefix-foreground  = ${colors.white}
 format-background         = ${colors.background}
 click-left                = xdg-open https://darksky.net/
 tail                      = true

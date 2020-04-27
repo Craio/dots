@@ -104,13 +104,10 @@ echo -e "#█▓▒░	DONE \n"
 #echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Removing and Linking some config files "
-#sudo touch /etc/profile.d/jre.sh
-#sudo rm /etc/profile.d/jre.sh
 sudo rm /etc/intel-undervolt.conf
 sudo rm /etc/tlp.conf
 sudo rm /etc/ly/config.ini
 
-#sudo ln -s /home/craig/scripts/autopilotfiles/jre.sh /etc/profile.d/jre.sh
 sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
 sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
 sudo ln -s /home/craig/scritps/autopilotfiles/config.ini /etc/ly/config.ini
@@ -133,16 +130,6 @@ echo -e "#█▓▒░	DONE \n"
 #echo -e "#█▓▒░	DONE \n"
 
 clear
-echo -e "#█▓▒░ 				Install Completed"
-echo -e "#█▓▒░	"
-echo -e "#█▓▒░ 	"
-echo -e "#█▓▒░	Reminders:"
-echo -e "#█▓▒░ 		-	Finish Dropbox setup."
-echo -e "#█▓▒░ 		-	Logout and load up bspwm"
-echo -e "#█▓▒░ 	"
-echo -e "#█▓▒░ 	"
-echo -e "#█▓▒░ 	"
-echo -e "#█▓▒░ 	"
 
 echo -e "\n#█▓▒░	Starting and enabling systemctl services "
 sudo systemctl start tlp.service intel-undervolt.service ly.service

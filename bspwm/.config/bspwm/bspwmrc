@@ -3,16 +3,29 @@
 #xrandr --output LVDS-0 --auto --rotate normal --pos 0x0 --output DP-0 --auto --rotate normal --left-of LVDS-0 --output VGA-0 --right-of LVDS-0 &
 
 #█▓▒░ kill some things
-pkill dropbox && pkill polybar && pkill picom && pkill sxhkd &
 
-wait 2
+if ps -A | grep dropbox; then
+	killall -q dropbox
+fi
+if ps -A | grep polybar; then
+	killall -q polybar
+fi
+if ps -A | grep picom; then
+	killall -q picom
+fi
+if ps -A | grep sxhkd; then
+	killall -q sxhkd
+fi
+
+
+bash "$HOME/scripts/bars" &
 
 #█▓▒░  set cursor theme
 xsetroot -cursor_name left_ptr &
 
 #█▓▒░ bspwm settings // ० ० ० ० ०
 bspc monitor DP-2 -d एक दो तीन चार पांच
-bspc monitor eDP1 -d एक दो तीन चार पांच
+bspc monitor eDP-1 -d एक दो तीन चार पांच
 bspc monitor HDMI-0 -d ० ० ० ० ०
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
@@ -32,13 +45,14 @@ bspc config focus_follows_pointer true
 
 #█▓▒░ relaunch programs
 bash "$HOME/.config/wpg/wp_init.sh" &
-#pgrep sxhkd     || sxhkd -a Return &
-#pgrep dropbox   || dropbox Return &
 
 sxhkd &
 picom --xrender-sync-fence &
 bash "$HOME/scripts/mouse" &
-bash "$HOME/scripts/bars" &
+dropbox &
 
 #█▓▒░ set bspwm border colors from wpgtk
 bash /home/craig/.config/bspwm/bspwm_colors.sh &
+
+
+bspc rule -a firefox-nightly state=tiled
