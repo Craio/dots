@@ -81,6 +81,9 @@ super + l
   bash betterlockscreen -l
 
 Print
+	flameshot gui
+
+super + Print
 	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
 
 #	Reload bspwm
@@ -108,14 +111,3 @@ XF86AudioPlay
 
 XF86AudioNext
 	playerctl next
-
-# Expand/contract bspwm's window gaps.
-super + alt + Up
-#	bspc config window_gap {150,135,120,105,90,75,60,45,30,15}
-	bspc config window_gap 10
-
-super + alt + Down
-	bspc config window_gap {15,30,45,60,75,90,105,120,135,150}
-
-super + alt + {Left,Right}
-	bspc config window_gap 15

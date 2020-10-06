@@ -1,10 +1,10 @@
 [colors]
-background          = ${xrdb:color0:#0E1D26}
-foreground          = ${xrdb:color7:#d6a6c4}
-active              = #7a1840
-inactive            = #53112c
-highlight           = ${xrdb:color5:#991F50}
-error               = ${xrdb:color9:#ef4554}
+background          = ${{xrdb:color0:{color0}}}
+foreground          = ${{xrdb:color7:{color7}}}
+active              = {active}
+inactive            = {inactive}
+highlight           = ${{xrdb:color5:{color5}}}
+error               = ${{xrdb:color9:{color9}}}
 
 red                 = #cc4a4a
 green               = #90BD39
@@ -26,7 +26,7 @@ screenchange-reload = true
 
 
 [bar/wpgtk]
-monitor             = ${env:MONITOR:}
+monitor             = ${{env:MONITOR:}}
 monitor-strict      = false
 enable-ipc          = true
 override-redirect   = true
@@ -39,8 +39,8 @@ offset-x            = 0%
 offset-y            = 0%
 top                 = true
 fixed-center        = true
-background          = ${colors.background}
-foreground          = ${colors.foreground}
+background          = ${{colors.background}}
+foreground          = ${{colors.foreground}}
 
 #line-size = 0
 #label-line-color = #f00
@@ -71,17 +71,17 @@ enable-click              = true
 enable-scroll             = true
 reverse-scroll            = false
 label-focused             = %name%
-label-focused-foreground  = ${colors.active}
-label-focused-background  = ${colors.background}
+label-focused-foreground  = ${{colors.active}}
+label-focused-background  = ${{colors.background}}
 label-focused-padding     = 1
 label-occupied            = %name%
-label-occupied-foreground = ${colors.red}
+label-occupied-foreground = ${{colors.red}}
 label-occupied-padding    = 1
 label-urgent              = %name%!
-label-urgent-background   = ${colors.background}
+label-urgent-background   = ${{colors.background}}
 label-urgent-padding      = 1
 label-empty               = %name%
-label-empty-foreground    = ${colors.background}
+label-empty-foreground    = ${{colors.background}}
 label-empty-padding       = 1
 
 
@@ -91,8 +91,8 @@ exec              = ~/scripts/spotibar
 exec-if           = pgrep spotify > /dev/null
 interval          = 1
 click-left        = playerctl -p spotify play-pause
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-foreground = ${{colors.foreground}}
+format-background = ${{colors.background}}
 format-padding    = 1
 tail              = true
 
@@ -111,8 +111,8 @@ format                    = <label>
 format-padding            = 2
 format-prefix             = "  "
 format-suffix             = "°"
-format-prefix-foreground  = ${colors.white}
-format-background         = ${colors.background}
+format-prefix-foreground  = ${{colors.white}}
+format-background         = ${{colors.background}}
 click-left                = xdg-open https://darksky.net/
 tail                      = true
 
@@ -123,7 +123,7 @@ card              = intel_backlight
 format            = <label>
 format-padding    = 0
 label             = 
-label-foreground  = ${colors.yellow}
+label-foreground  = ${{colors.yellow}}
 enable-scroll     = true
 
 
@@ -136,7 +136,7 @@ use-ui-max              = false
 interval                = 5
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
-ramp-volume-foreground  = ${colors.violet}
+ramp-volume-foreground  = ${{colors.violet}}
 ramp-volume-0           = 
 ramp-volume-1           = 
 ramp-volume-2           = 
@@ -145,7 +145,7 @@ click-middle            = blueman-manager
 label-volume            = %percentage%%
 label-muted-padding     = 2
 label-muted             =  muted
-label-muted-foreground  = ${colors.red}
+label-muted-foreground  = ${{colors.red}}
 
 
 [module/battery]
@@ -162,13 +162,13 @@ format-discharging        = <ramp-capacity><label-discharging>
 format-full               = <ramp-capacity>
 label-charging            = %percentage%
 label-discharging         = %time%
-ramp-capacity-foreground  = ${colors.green}
+ramp-capacity-foreground  = ${{colors.green}}
 ramp-capacity-0           = 
 ramp-capacity-1           = 
 ramp-capacity-2           = 
 ramp-capacity-3           = 
 ramp-capacity-4           = 
-animation-charging-foreground  = ${colors.green}
+animation-charging-foreground  = ${{colors.green}}
 animation-charging-0      = 
 animation-charging-1      = 
 animation-charging-2      = 
@@ -187,8 +187,8 @@ format-connected              = <label-connected>
 format-disconnected           = <label-disconnected>
 label-connected               = "  "
 label-disconnected            = "  "
-label-connected-foreground    = ${colors.cyan}
-label-disconnected-foreground = ${colors.red}
+label-connected-foreground    = ${{colors.cyan}}
+label-disconnected-foreground = ${{colors.red}}
 
 
 [module/date]
@@ -199,8 +199,8 @@ date-alt                  = " %A %d %B"
 time                      = "%I:%M"
 time-alt                  = "%I:%M:%S"
 format-prefix             = 
-format-prefix-foreground  = ${colors.active}
-format-background         = ${colors.background}
+format-prefix-foreground  = ${{colors.active}}
+format-background         = ${{colors.background}}
 format-padding            = 2
 label                     = "%date% %time%"
 

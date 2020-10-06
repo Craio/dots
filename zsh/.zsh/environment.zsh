@@ -5,7 +5,7 @@
 export PATH=$HOME/scripts:/usr/local/bin:$PATH
 
 #█▓▒░ Preferred editor for local and remote sessions
-export EDITOR=atom
+export EDITOR=micro
 export VISUAL=atom
 
 #█▓▒░ java fixes

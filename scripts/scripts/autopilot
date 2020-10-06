@@ -23,18 +23,19 @@ do
 
 # Refresh and upgrade pacman packages
 echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
-yay -Syu
+sudo pacman -S yay --noconfirm --needed
+yay -Syyu
 echo -e "#█▓▒░	DONE \n "
 
 # Insatll system tools
 echo -e "#█▓▒░	Installing system tools: "
-yay -S base-devel gtop htop stow pavucontrol picom ly-git gparted scrot intel-undervolt xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git xclip xorg-xsetroot zsh --noconfirm
+yay -S arandr base-devel gtop htop stow pavucontrol picom-ibhagwan-git redshift gparted scrot intel-undervolt cpupower-gui xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git linux-latest-tp_smapi xclip xdo-git xorg-xsetroot --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 # Stow Dotfiles
 echo -e "\n#█▓▒░	Stowing dotfiles "
 cd ~/dots
-stow bspwm picom polybar rofi scripts spicetify sxhkd wpg X zsh
+stow bspwm picom polybar rofi scripts sxhkd wpg X
 cd ~
 echo -e "#█▓▒░	DONE \n"
 
@@ -46,17 +47,17 @@ echo -e "#█▓▒░	DONE \n"
 # Install browsers
 echo -e "#█▓▒░	Installing browsers:  "
 #yay -S firefox-nightly w3m tor-browser --noconfirm
-yay -S firefox-nightly w3m --noconfirm
+yay -S firefox-nightly --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 # Install media
 echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox spotify playerctl --noconfirm
+yay -S feh dropbox spotify playerctl --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 # Install rice
 echo -e "#█▓▒░	Installing rice: "
-yay -S bspwm-rounded-corners betterlockscreen sxhkd-git wpgtk-git lxappearance rofi-git polybar-git spicetify-cli --noconfirm
+yay -S bspwm-git betterlockscreen sxhkd-git wpgtk-git lxappearance rofi-git polybar-git --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 # Install extras
@@ -64,84 +65,40 @@ echo -e "#█▓▒░	DONE \n"
 #yay -S tor-browser --noconfirm
 #echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Changing default shell "
-chsh -s /bin/zsh
-sudo chsh -s /bin/zsh
-echo -e "#█▓▒░	DONE \n"
+#echo -e "\n#█▓▒░	Changing default shell "
+#chsh -s /bin/zsh
+#sudo chsh -s /bin/zsh
+#echo -e "#█▓▒░	DONE \n"
 
 # Make wpg install gtk & bspwm templates
 echo -e "\n#█▓▒░	Setting wpg themes "
 wpg-install.sh -g -b -r
 echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Set up spicetify "
-#sudo chmod 777 /opt/spotify -R
-#spicetify backup apply enable-devtool
-#spicetify update
-echo -e "#█▓▒░	DONE \n"
-
-echo -e "\n#█▓▒░	Install Pywalfox "
-#git clone https://github.com/Frewacom/Pywalfox.git
-#chmod +x  Pywalfox/setup.sh
-#cd Pywalfox
-#bash setup.sh
-echo -e "#█▓▒░	DONE \n"
-
 # Install extras
-echo -e "#█▓▒░	Installing extras: "
-yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
-echo -e "#█▓▒░	DONE \n"
+#echo -e "#█▓▒░	Installing extras: "
+yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting flameshot --noconfirm --needed
+#echo -e "#█▓▒░	DONE \n"
 
 # Install fonts
 echo -e "#█▓▒░	Installing fonts: "
-yay -S otf-sfmono cozette-otb lohit-fonts nerd-fonts-complete --noconfirm
+yay -S otf-sfmono lohit-fonts ttf-font-awesome --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
-
-# Remove some things
-#echo -e "#█▓▒░	Remove things "
-#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
-# --noconfirm
-#echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Removing and Linking some config files "
 sudo rm /etc/intel-undervolt.conf
 sudo rm /etc/tlp.conf
-sudo rm /etc/ly/config.ini
 
 sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
 sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
-sudo ln -s /home/craig/scritps/autopilotfiles/config.ini /etc/ly/config.ini
 echo -e "#█▓▒░	DONE \n"
-
-# Install extras
-echo -e "#█▓▒░	Installing extras: "
-yay -S zsh-autosugestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-# Install fonts
-echo -e "#█▓▒░	Installing fonts: "
-yay -S otf-sfmono cozette-otb ttf-lohit-fonts nerd-fonts-complete --noconfirm
-echo -e "#█▓▒░	DONE \n"
-
-# Remove some things
-#echo -e "#█▓▒░	Remove things "
-#yay -Rsn firefox evolution hexchat snapd gedit empathy --noconfirm
-# --noconfirm
-#echo -e "#█▓▒░	DONE \n"
-
 clear
 
 echo -e "\n#█▓▒░	Starting and enabling systemctl services "
-sudo systemctl start tlp.service intel-undervolt.service ly.service
-sudo systemctl enable tlp.service intel-undervolt.service ly.service betterlockscreen@$USER
-
 sudo intel-undervolt apply
-
-# setup ly
-sudo systemctl disable getty@tty2.service
-echo -e "#█▓▒░	DONE \n"
-
-
+sudo systemctl enable tlp.service intel-undervolt.service
+sudo systemctl start tlp.service intel-undervolt.service
+#betterlockscreen@$USER
  ;;
 
  	[qQ])
