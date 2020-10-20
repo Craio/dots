@@ -59,9 +59,54 @@ font-3              = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:
 font-4              = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=14:antialias=true;0
 modules-left        = powermenu bspwm
 modules-center      = spotibar
-modules-right       = runelite weather backlight pulseaudio battery network date dropbox
+modules-right       = weather backlight pulseaudio battery network date dropbox
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
+
+#█▓▒░ Power Menu
+[module/powermenu]
+type                        = custom/menu
+label-open                  = 
+label-open-foreground       = ${colors.highlight}
+label-open-background       = ${colors.background}
+label-open-padding          = 1
+label-close                 = 
+label-close-padding         = 1
+label-close-foreground      = ${colors.red}
+label-separator             = ⏽
+label-separator-foreground  = ${colors.white}
+
+menu-0-0      = Logout
+menu-0-0-exec = menu-open-1
+menu-0-1      = Reboot
+menu-0-1-exec = menu-open-2
+menu-0-2      = Shutdown
+menu-0-2-exec = menu-open-3
+#█▓▒░ Blank character for | decoration
+menu-0-3     = ⠀
+
+menu-1-0      = No
+menu-1-0-exec = menu-open-0
+menu-1-1      = Yes
+menu-1-1-exec = bspc quit
+#█▓▒░ Blank character for | decoration
+menu-1-2     = ⠀
+
+menu-2-0      = No
+menu-2-0-exec = menu-open-0
+menu-2-1      = Yes
+menu-2-1-exec = systemctl reboot
+#█▓▒░ Blank character for | decoration
+menu-2-2     = ⠀
+
+menu-3-0      = No
+menu-3-0-exec = menu-open-0
+menu-3-1      = Yes
+menu-3-1-exec = systemctl poweroff
+#█▓▒░ Blank character for | decoration
+menu-3-2     = ⠀
+
+
 
 
 [module/bspwm]
@@ -95,13 +140,6 @@ format-foreground = ${colors.foreground}
 format-background = ${colors.background}
 format-padding    = 1
 tail              = true
-
-
-[module/runelite]
-type = custom/ipc
-hook-0 = test -e /tmp/rl_state && cat /tmp/rl_state
-initial = 1
-
 
 [module/weather]
 type                      = custom/script

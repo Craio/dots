@@ -17,7 +17,7 @@ if ps -A | grep sxhkd; then
 	killall -q sxhkd
 fi
 
-#bash "$HOME/scripts/disp" &
+xrandr --output eDP-1 --same-as HDMI-1-0 &
 bash "$HOME/scripts/bars" &
 
 #█▓▒░  set cursor theme
@@ -26,7 +26,7 @@ xsetroot -cursor_name left_ptr &
 #█▓▒░ bspwm settings // ० ० ० ० ०
 bspc monitor DP-2 -d एक दो तीन चार पांच
 bspc monitor eDP-1 -d एक दो तीन चार पांच
-bspc monitor HDMI-0 -d एक दो तीन चार पांच
+bspc monitor HDMI-1-0 -d एक दो तीन चार पांच
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
@@ -36,7 +36,6 @@ bspc config top_padding          65
 bspc config bottom_padding       0
 bspc config left_padding         0
 bspc config right_padding        0
-#bspc config border_radius        15
 bspc config split_ratio          0.50
 
 bspc config borderless_monocle   true
@@ -49,9 +48,7 @@ bash "$HOME/.config/wpg/wp_init.sh" &
 sxhkd &
 picom &
 bash "$HOME/scripts/mouse" &
+#redshift-gtk &
 dropbox &
 
 bspc rule -a firefox-nightly state=tiled
-
-#█▓▒░ set bspwm border colors from wpgtk
-bash /home/craig/.config/bspwm/bspwm_colors.sh &

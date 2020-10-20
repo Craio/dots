@@ -52,7 +52,8 @@ echo -e "#█▓▒░	DONE \n"
 
 # Install media
 echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox spotify playerctl --noconfirm --needed
+yay -S feh dropbox playerctl --noconfirm --needed
+#yay -S feh dropbox spotify playerctl --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 # Install rice
@@ -82,19 +83,24 @@ yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting 
 
 # Install fonts
 echo -e "#█▓▒░	Installing fonts: "
-yay -S otf-sfmono lohit-fonts ttf-font-awesome --noconfirm --needed
+yay -S otf-sfmono lohit-fonts ttf-font-awesome otf-fantasque-sans-mono ttf-twemoji-color --noconfirm --needed
 echo -e "#█▓▒░	DONE \n"
 
 echo -e "\n#█▓▒░	Removing and Linking some config files "
 sudo rm /etc/intel-undervolt.conf
 sudo rm /etc/tlp.conf
+sudo rm /etc/udev/rules.d/backlight.rules
 
 sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
 sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
+sudo ln -s /home/craig/scripts/autopilotfiles/backlight.rules /etc/udev/rules.d/backlight.rules
+
+
 echo -e "#█▓▒░	DONE \n"
 clear
 
 echo -e "\n#█▓▒░	Starting and enabling systemctl services "
+sudo gpasswd -a craig video
 sudo intel-undervolt apply
 sudo systemctl enable tlp.service intel-undervolt.service
 sudo systemctl start tlp.service intel-undervolt.service
@@ -105,7 +111,7 @@ sudo systemctl start tlp.service intel-undervolt.service
 exit
  ;;
      *)
- echo "Try that one again."
+ echo "#█▓▒░ Try that one again."
  ;;
  esac
 done
