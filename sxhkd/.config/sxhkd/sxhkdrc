@@ -2,14 +2,11 @@
 #█▓▒░ WM independent hotkeys
 # Terminal emulator
 super + Return
-	urxvt
-
-super + alt + Return
-	termite
+	alacritty
 
 # Program launcher.
 super + space
-	rofi -terminal urxvt -show run
+	rofi -show run
 
 # Make sxhkd reload its configuration files:
 super + Escape
@@ -23,7 +20,7 @@ super + alt + Escape
 	bspc quit
 
 # close and kill
-super + {_,shift + }w
+super + {_,shift + }q
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
@@ -85,6 +82,9 @@ Print
 
 super + Print
 	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
+
+shift + Print
+	bash ~/scripts/colorpicker
 
 #	Reload bspwm
 XF86Tools

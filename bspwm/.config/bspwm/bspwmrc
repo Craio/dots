@@ -2,37 +2,39 @@
 #█▓▒░  monitor setting
 #xrandr --output LVDS-0 --auto --rotate normal --pos 0x0 --output DP-0 --auto --rotate normal --left-of LVDS-0 --output VGA-0 --right-of LVDS-0 &
 
-#█▓▒░ kill some things
+#█▓▒░  kill some things
 
 if ps -A | grep dropbox; then
-	killall -q dropbox
+	killall -qw dropbox
 fi
 if ps -A | grep polybar; then
-	killall -q polybar
+	killall -qw polybar
 fi
 if ps -A | grep picom; then
-	killall -q picom
+	killall -qw picom
+fi
+if ps -A | grep redshift; then
+	killall -qw redshift
 fi
 if ps -A | grep sxhkd; then
-	killall -q sxhkd
+	killall -qw sxhkd
 fi
 
 xrandr --output eDP-1 --same-as HDMI-1-0 &
-bash "$HOME/scripts/bars" &
 
 #█▓▒░  set cursor theme
 xsetroot -cursor_name left_ptr &
 
-#█▓▒░ bspwm settings // ० ० ० ० ०
+#█▓▒░  bspwm settings // ० ० ० ० ०
 bspc monitor DP-2 -d एक दो तीन चार पांच
 bspc monitor eDP-1 -d एक दो तीन चार पांच
 bspc monitor HDMI-1-0 -d एक दो तीन चार पांच
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
-bspc config border_width       	 0
-bspc config window_gap           25
-bspc config top_padding          65
+bspc config border_width       	 5
+bspc config window_gap           35
+bspc config top_padding          60
 bspc config bottom_padding       0
 bspc config left_padding         0
 bspc config right_padding        0
@@ -42,13 +44,14 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
-#█▓▒░ relaunch programs
-bash "$HOME/.config/wpg/wp_init.sh" &
-
-sxhkd &
-picom &
-bash "$HOME/scripts/mouse" &
-#redshift-gtk &
-dropbox &
-
 bspc rule -a firefox-nightly state=tiled
+
+#█▓▒░  launch programs
+bash "$HOME/.config/wpg/wp_init.sh" &
+bash "$HOME/scripts/bars" &
+
+dropbox &
+picom &
+redshift -l 56:-3 &
+sxhkd &
+bash "$HOME/.config/bspwm/bspwm_colors.sh" &

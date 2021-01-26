@@ -1,12 +1,14 @@
 #! /bin/sh
-# Start Autopilot installer. Fully installs a complete working environment from a fresh install.
+# Start Autopilot installer. /should/ fully install a complete working environment from a fresh install.
 set -e
 
-# keep track of the last executed command
+# Keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
-trap 'echo "\"${last_command}\" command failed with exit code $?."' EXIT
+trap 'echo -e "\n\nProgram failed at \"${last_command}\" command failed with exit code $?. \n\n"' EXIT
 
+# Display instructions
+clear
 echo "#█▓▒░"
 echo "#█▓▒░"
 echo "#█▓▒░		Autopilot "
@@ -15,103 +17,102 @@ echo "#█▓▒░"
 
 
 while true
-do
- read -r -p "#█▓▒░ Type "BEGIN" to start the installation: " input
+  do
+    read -r -p "#█▓▒░ Type "BEGIN" to start the installation: " input
 
- case $input in
-     [B][E][G][I][N])
+    case $input in
+      [B][E][G][I][N])
 
-# Refresh and upgrade pacman packages
-echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
-sudo pacman -S yay --noconfirm --needed
-yay -Syyu
-echo -e "#█▓▒░	DONE \n "
+        # Refresh and upgrade pacman packages
+        echo -e "\n#█▓▒░	Refreshing pacman and upgrading packages "
+        sudo pacman -S yay --noconfirm --needed
+        yay -Syyu
+        echo -e "#█▓▒░	DONE \n "
 
-# Insatll system tools
-echo -e "#█▓▒░	Installing system tools: "
-yay -S arandr base-devel gtop htop stow pavucontrol picom-ibhagwan-git redshift gparted scrot intel-undervolt cpupower-gui xorg-xinput cpupower gparted rxvt-unicode-patched tlp tlpui-git linux-latest-tp_smapi xclip xdo-git xorg-xsetroot --noconfirm --needed
-echo -e "#█▓▒░	DONE \n"
+        # Install system tools
+        echo -e "#█▓▒░	Installing system tools: "
+        yay -S base-devel gtop htop stow gparted scrot cpupower-gui xorg-xinput cpupower gparted xclip xorg-xsetroot xsettingsd --noconfirm --needed
+        echo -e "#█▓▒░	DONE \n"
 
-# Stow Dotfiles
-echo -e "\n#█▓▒░	Stowing dotfiles "
-cd ~/dots
-stow bspwm picom polybar rofi scripts sxhkd wpg X
-cd ~
-echo -e "#█▓▒░	DONE \n"
+        # Stow Dotfiles
+        echo -e "\n#█▓▒░	Stowing dotfiles "
+        cd ~/dots
+        stow X alacritty betterlockscreen bspwm dunst picom polybar rofi scripts sxhkd wpg zsh
+        cd ~
+        echo -e "#█▓▒░	DONE \n"
 
-# Install text editors
-echo -e "\n#█▓▒░	Installing editors: "
-#yay -S atom micro --noconfirm
-echo -e "#█▓▒░	DONE \n"
+        # Install text editors
+        echo -e "\n#█▓▒░	Installing editors: "
+        yay -S atom micro github-desktop --noconfirm
+        echo -e "#█▓▒░	DONE \n"
 
-# Install browsers
-echo -e "#█▓▒░	Installing browsers:  "
-#yay -S firefox-nightly w3m tor-browser --noconfirm
-yay -S firefox-nightly --noconfirm --needed
-echo -e "#█▓▒░	DONE \n"
+        # Install browsers
+        echo -e "#█▓▒░	Installing browsers:  "
+        yay -S firefox-nightly tor-browser --noconfirm --needed
+        echo -e "#█▓▒░	DONE \n"
 
-# Install media
-echo -e "#█▓▒░	Installing media: "
-yay -S feh dropbox playerctl --noconfirm --needed
-#yay -S feh dropbox spotify playerctl --noconfirm --needed
-echo -e "#█▓▒░	DONE \n"
+        # Install extras
+        echo -e "#█▓▒░	Installing extras: "
+        yay -S feh dropbox flameshot gpick playerctl spotify --noconfirm --needed
+        echo -e "#█▓▒░	DONE \n"
 
-# Install rice
-echo -e "#█▓▒░	Installing rice: "
-yay -S bspwm-git betterlockscreen sxhkd-git wpgtk-git lxappearance rofi-git polybar-git --noconfirm --needed
-echo -e "#█▓▒░	DONE \n"
+        # Install rice
+        echo -e "#█▓▒░	Installing rice: "
+        yay -S bspwm-git betterlockscreen sxhkd-git wpgtk-git lxappearance rofi-git polybar-git picom-ibhagwan-git redshift bpytop python-pip --noconfirm --needed
+        echo -e "#█▓▒░	DONE \n"
 
-# Install extras
-#echo -e "#█▓▒░	Installing extras: "
-#yay -S tor-browser --noconfirm
-#echo -e "#█▓▒░	DONE \n"
+        # Install wpg icons
+        echo -e "\n#█▓▒░	Setting wpg themes "
+        wpg-install.sh -i
+        echo -e "#█▓▒░	DONE \n"
 
-#echo -e "\n#█▓▒░	Changing default shell "
-#chsh -s /bin/zsh
-#sudo chsh -s /bin/zsh
-#echo -e "#█▓▒░	DONE \n"
+        # Set betterlockscreen wallpaper
+        echo -e "\n#█▓▒░	Setting wpg themes "
+        betterlockscreen -u dots/wpg/.config/wpg/wallpapers/Rosepine.jpg
+        echo -e "#█▓▒░	DONE \n"
 
-# Make wpg install gtk & bspwm templates
-echo -e "\n#█▓▒░	Setting wpg themes "
-wpg-install.sh -g -b -r
-echo -e "#█▓▒░	DONE \n"
+        # Install pywalfox
+        echo -e "\n#█▓▒░	Setting pywalfox "
+        pip install pywalfox
+        pywalfox install
+        pywalfox update
+        echo -e "#█▓▒░	DONE \n"
 
-# Install extras
-#echo -e "#█▓▒░	Installing extras: "
-yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting flameshot --noconfirm --needed
-#echo -e "#█▓▒░	DONE \n"
+        # Install zsh extras
+        #echo -e "#█▓▒░	Installing extras: "
+        #yay -S zsh-autosuggestions zsh-history-substring-search zsh-syntax-highlighting --noconfirm --needed
+        #echo -e "#█▓▒░	DONE \n"
 
-# Install fonts
-echo -e "#█▓▒░	Installing fonts: "
-yay -S otf-sfmono lohit-fonts ttf-font-awesome otf-fantasque-sans-mono ttf-twemoji-color --noconfirm --needed
-echo -e "#█▓▒░	DONE \n"
+        # Install fonts
+        echo -e "#█▓▒░	Installing fonts: "
+        yay -S lohit-fonts ttf-font-awesome otf-fantasque-sans-mono ttf-twemoji-color --noconfirm --needed
+        echo -e "#█▓▒░	DONE \n"
 
-echo -e "\n#█▓▒░	Removing and Linking some config files "
-sudo rm /etc/intel-undervolt.conf
-sudo rm /etc/tlp.conf
-sudo rm /etc/udev/rules.d/backlight.rules
+        echo -e "\n#█▓▒░	Removing and Linking config files: "
+        sudo rm /etc/udev/rules.d/backlight.rules
+        sudo ln -s /home/craig/scripts/autopilotfiles/backlight.rules /etc/udev/rules.d/backlight.rules
 
-sudo ln -s /home/craig/scripts/autopilotfiles/intel-undervolt.conf /etc/intel-undervolt.conf
-sudo ln -s /home/craig/scripts/autopilotfiles/tlp.conf /etc/tlp.conf
-sudo ln -s /home/craig/scripts/autopilotfiles/backlight.rules /etc/udev/rules.d/backlight.rules
+        echo -e "#█▓▒░	DONE \n"
 
+        echo -e "\n#█▓▒░	Adding user to video group for brightness control: "
+        sudo gpasswd -a craig video
+        echo -e "#█▓▒░	DONE \n"
 
-echo -e "#█▓▒░	DONE \n"
-clear
+      ;;
 
-echo -e "\n#█▓▒░	Starting and enabling systemctl services "
-sudo gpasswd -a craig video
-sudo intel-undervolt apply
-sudo systemctl enable tlp.service intel-undervolt.service
-sudo systemctl start tlp.service intel-undervolt.service
-#betterlockscreen@$USER
- ;;
+      [qQ])
+        exit
+      ;;
 
- 	[qQ])
-exit
- ;;
-     *)
- echo "#█▓▒░ Try that one again."
- ;;
- esac
+      *)
+        clear
+        echo "#█▓▒░"
+        echo "#█▓▒░"
+        echo "#█▓▒░		Autopilot "
+        echo "#█▓▒░"
+        echo "#█▓▒░"
+        echo "#█▓▒░		Try that one again."
+        echo "#█▓▒░"
+      ;;
+    esac
 done

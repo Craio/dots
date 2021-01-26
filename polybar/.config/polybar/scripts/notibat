@@ -1,0 +1,61 @@
+#!/bin/bash
+# Set location for temporary files to be created
+: "${BAT_LOW:=/tmp/batteryLowPower}"
+: "${BAT_AC:=/tmp/batteryACconnected}"
+: "${BAT_FULL:=/tmp/batteryFullPower}"
+
+# Set low battery percentage threshold to show low power notification at
+: "${LOW:=20}"
+: "${FULL:=95}"
+
+
+# Use the following command to list batteries and adapters:
+#   $ ls -1 /sys/class/power_supply/
+: "${BATTERY:=BAT0}"
+# Find current battery capacity percentage
+let bat="$(cat /sys/class/power_supply/"$BATTERY"/capacity)"
+#let FULL="$(cat /sys/class/power_supply/"$BATTERY"/charge_stop_threshold)"
+
+
+# if /tmp/batteryLowPower exists and is a regular file then
+if [[ -f "$BAT_LOW" ]]; then
+        # Check if the current battery percentage level is higher than the LOW threshold value, if so remove the file /tmp/batterytmp
+        ((bat > LOW)) && rm -f "$BAT_LOW"
+else
+        # Otherwise, check if battery percentage is equal to or lower than the set threshold, if so send
+        # a critial notification with image and remaining percentage then create the file /tmp/batteryLowPower
+        ((bat <= LOW)) && {
+                notify-send -u critical -i ~/.config/dunst/images/battery-low.png "<Battery ("$bat"%)" "<br><br> Plug in to charge the battery!"
+                touch "$BAT_LOW"
+        }
+fi
+
+
+if [[ -f "$BAT_AC" ]]; then
+        grep -q 'Discharging' /sys/class/power_supply/BAT0/status && {
+                notify-send -u critical -i ~/.config/dunst/images/battery-charged.png "<Battery ("$bat"%)" "<br><br> Battery is discharging!"
+                rm -f "$BAT_AC"
+        }
+else
+        grep -q 'Charging' /sys/class/power_supply/BAT0/status && {
+                notify-send -u critical -i ~/.config/dunst/images/battery-charging.png "<Battery ("$bat"%)" "<br><br> Battery is charging!"
+                touch "$BAT_AC"
+        }
+fi
+
+
+# if /tmp/battery/batteryFullPower exists and is a regular file then
+if [[ -f "$BAT_FULL" ]]; then
+        # Check if the current battery percentage level is lower than the FULL threshold value, if so remove the file /tmp/batteryFullPower.
+        ((bat < FULL)) && rm -f "$BAT_FULL"
+else
+        # Otherwise, check if battery percentage is equal to or greater than the set threshold, if so send
+        # a critial notification with image and remaining percentage then create the file /tmp/batteryFullPower
+        ((bat >= FULL)) && {
+                notify-send -u critical -i ~/.config/dunst/images/battery-full.png "<Battery ("$bat"%)" "<br><br> Battery is fully charged!"
+                touch "$BAT_FULL"
+        }
+fi
+
+# Uncomment for debugging. Shows percentage in polybar as text value.
+#echo "$bat"

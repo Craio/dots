@@ -1,10 +1,10 @@
 [colors]
-background          = ${xrdb:color0:#0E1D26}
-foreground          = ${xrdb:color7:#d6a6c4}
-active              = #7a1840
-inactive            = #53112c
-highlight           = ${xrdb:color5:#991F50}
-error               = ${xrdb:color9:#ef4554}
+background          = ${xrdb:color0:#191724}
+foreground          = ${xrdb:color7:#ebbcba}
+highlight           = ${xrdb:color9:#eb6f92}
+occupied            = ${xrdb:color5:#c4a7e7}
+unoccupied          = ${xrdb:color8:#26233a}
+
 
 red                 = #cc4a4a
 green               = #90BD39
@@ -30,7 +30,7 @@ monitor             = ${env:MONITOR:}
 monitor-strict      = false
 enable-ipc          = true
 override-redirect   = true
-#dpi                 = 144
+dpi                 = 144
 wm-restack          = bspwm
 width               = 100%
 height              = 2.25%
@@ -41,10 +41,6 @@ top                 = true
 fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
-
-#line-size = 0
-#label-line-color = #f00
-
 border-size         = 20
 border-color        = #00000000
 spacing             = 2
@@ -52,98 +48,67 @@ padding-left        = 2
 padding-right       = 2
 module-margin-left  = 1
 module-margin-right = 1
-font-0              = Fantasque Sans Mono:style=Regular:pixelsize=16:antialias=true;0
-font-1              = Lohit Hindi:style=Regular:size=14:antialias=true;0
-font-2              = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:size=14:antialias=true;0
-font-3              = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=14:antialias=true;0
-font-4              = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=14:antialias=true;0
-modules-left        = powermenu bspwm
+
+font-0              = Fantasque Sans Mono:style=Regular:pixelsize=11:antialias=true;0
+font-1              = Lohit Hindi:style=Regular:size=12:antialias=true;0
+font-2              = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:size=11:antialias=true;0
+font-3              = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=11:antialias=true;0
+font-4              = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=11:antialias=true;0
+
+modules-left        = powermenu bspwm notibat notieye notipose
 modules-center      = spotibar
 modules-right       = weather backlight pulseaudio battery network date dropbox
 scroll-up           = bspwm-desknext
 scroll-down         = bspwm-deskprev
 
-#█▓▒░ Power Menu
-[module/powermenu]
-type                        = custom/menu
-label-open                  = 
-label-open-foreground       = ${colors.highlight}
-label-open-background       = ${colors.background}
-label-open-padding          = 1
-label-close                 = 
-label-close-padding         = 1
-label-close-foreground      = ${colors.red}
-label-separator             = ⏽
-label-separator-foreground  = ${colors.white}
-
-menu-0-0      = Logout
-menu-0-0-exec = menu-open-1
-menu-0-1      = Reboot
-menu-0-1-exec = menu-open-2
-menu-0-2      = Shutdown
-menu-0-2-exec = menu-open-3
-#█▓▒░ Blank character for | decoration
-menu-0-3     = ⠀
-
-menu-1-0      = No
-menu-1-0-exec = menu-open-0
-menu-1-1      = Yes
-menu-1-1-exec = bspc quit
-#█▓▒░ Blank character for | decoration
-menu-1-2     = ⠀
-
-menu-2-0      = No
-menu-2-0-exec = menu-open-0
-menu-2-1      = Yes
-menu-2-1-exec = systemctl reboot
-#█▓▒░ Blank character for | decoration
-menu-2-2     = ⠀
-
-menu-3-0      = No
-menu-3-0-exec = menu-open-0
-menu-3-1      = Yes
-menu-3-1-exec = systemctl poweroff
-#█▓▒░ Blank character for | decoration
-menu-3-2     = ⠀
-
-
-
 
 [module/bspwm]
-type                      = internal/bspwm
-pin-workspaces            = true
-enable-click              = true
-enable-scroll             = true
-reverse-scroll            = false
-label-focused             = %name%
-label-focused-foreground  = ${colors.active}
-label-focused-background  = ${colors.background}
-label-focused-padding     = 1
-label-occupied            = %name%
-label-occupied-foreground = ${colors.red}
-label-occupied-padding    = 1
-label-urgent              = %name%!
-label-urgent-background   = ${colors.background}
-label-urgent-padding      = 1
-label-empty               = %name%
-label-empty-foreground    = ${colors.background}
-label-empty-padding       = 1
+type = internal/bspwm
+
+label-focused               = %name%
+label-focused-foreground    = ${colors.highlight}
+label-focused-background    = ${colors.background}
+label-focused-padding       = 1
+
+label-occupied              = %name%
+label-occupied-padding      = 1
+label-occupied-foreground   = ${colors.occupied}
+
+
+label-urgent                = %name%!
+label-urgent-background     = ${colors.background}
+label-urgent-padding        = 1
+
+label-empty                 = %name%
+label-empty-foreground      = ${colors.unoccupied}
+label-empty-padding         = 1
 
 
 [module/spotibar]
-type              = custom/script
-exec              = ~/scripts/spotibar
-exec-if           = pgrep spotify > /dev/null
-interval          = 1
-click-left        = playerctl -p spotify play-pause
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
-format-padding    = 1
-tail              = true
+type                = custom/script
+exec                = ~/.config/polybar/scripts/spotibar
+exec-if             = pgrep spotify > /dev/null
+interval            = 1
+click-left          = playerctl -p spotify play-pause
+format-foreground   = ${colors.foreground}
+format-background   = ${colors.background}
+format-padding      = 1
+tail                = true
+
+
+[module/backlight]
+type                = internal/backlight
+card                = intel_backlight
+format              = <label>
+format-padding      = 0
+label               = 
+label-foreground    = ${colors.yellow}
+enable-scroll       = true
+
 
 [module/weather]
 type                      = custom/script
-exec                      = ~/scripts/weather
+exec                      = ~/.config/polybar/scripts/weather
 interval                  = 300
 format                    = <label>
 format-padding            = 2
@@ -153,16 +118,6 @@ format-prefix-foreground  = ${colors.white}
 format-background         = ${colors.background}
 click-left                = xdg-open https://darksky.net/
 tail                      = true
-
-
-[module/backlight]
-type              = internal/backlight
-card              = intel_backlight
-format            = <label>
-format-padding    = 0
-label             = 
-label-foreground  = ${colors.yellow}
-enable-scroll     = true
 
 
 [module/pulseaudio]
@@ -189,65 +144,119 @@ label-muted-foreground  = ${colors.red}
 [module/battery]
 # Use the following command to list batteries and adapters:
 #   $ ls -1 /sys/class/power_supply/
-type                      = internal/battery
-full-at                   = 100
-battery                   = BAT0
-adapter                   = AC
-poll-interval             = 1
-time-format               = %H:%M
-format-charging           = <animation-charging><label-charging>
-format-discharging        = <ramp-capacity><label-discharging>
-format-full               = <ramp-capacity>
-label-charging            = %percentage%
-label-discharging         = %time%
-ramp-capacity-foreground  = ${colors.green}
-ramp-capacity-0           = 
-ramp-capacity-1           = 
-ramp-capacity-2           = 
-ramp-capacity-3           = 
-ramp-capacity-4           = 
-animation-charging-foreground  = ${colors.green}
-animation-charging-0      = 
-animation-charging-1      = 
-animation-charging-2      = 
-animation-charging-3      = 
-animation-charging-4      = 
-animation-charging-framerate = 1000
+type                            = internal/battery
+full-at                         = 95
+battery                         = BAT0
+adapter                         = AC
+poll-interval                   = 1
+time-format                     = %H:%M
+format-charging                 = <animation-charging><label-charging>
+format-discharging              = <ramp-capacity><label-discharging>
+format-full                     = <ramp-capacity>
+label-charging                  = %percentage%
+label-discharging               = %time%
+ramp-capacity-foreground        = ${colors.green}
+ramp-capacity-0                 = 
+ramp-capacity-1                 = 
+ramp-capacity-2                 = 
+ramp-capacity-3                 = 
+ramp-capacity-4                 = 
+animation-charging-foreground   = ${colors.green}
+animation-charging-0            = 
+animation-charging-1            = 
+animation-charging-2            = 
+animation-charging-3            = 
+animation-charging-4            = 
+animation-charging-framerate    = 500
 
 
 [module/network]
 # Use the following command to list network interfaces:
 #   $ nmcli device status
-type                          = internal/network
-interface                     = wlp0s20f3
-interval                      = 2
-format-connected              = <label-connected>
-format-disconnected           = <label-disconnected>
-label-connected               = "  "
-label-disconnected            = "  "
-label-connected-foreground    = ${colors.cyan}
-label-disconnected-foreground = ${colors.red}
+type                            = internal/network
+interface                       = wlp0s20f3
+interval                        = 5
+format-connected                = <label-connected>
+format-disconnected             = <label-disconnected>
+label-connected                 = "  "
+label-disconnected              = "  "
+label-connected-foreground      = ${colors.cyan}
+label-disconnected-foreground   = ${colors.red}
 
 
 [module/date]
-type                      = internal/date
-interval                  = 1
-date                      =
-date-alt                  = " %A %d %B"
-time                      = "%I:%M"
-time-alt                  = "%I:%M:%S"
-format-prefix             = 
-format-prefix-foreground  = ${colors.active}
-format-background         = ${colors.background}
-format-padding            = 2
-label                     = "%date% %time%"
+type                        = internal/date
+interval                    = 1
+date                        =
+date-alt                    = "  %A %d %B"
+time                        = " %I:%M"
+time-alt                    = "%I:%M:%S"
+format-prefix               = 
+format-prefix-foreground    = ${colors.highlight}
+format-background           = ${colors.background}
+format-padding              = 2
+label                       = "%date% %time%"
 
 
 [module/dropbox]
-type        = custom/script
-exec        = ~/scripts/barbox
-interval    = 5
-label       = %output%
-format      = <label>
-click-left  = ~/scripts/barbox --toggle
-tail        = true
+type          = custom/script
+exec          = ~/.config/polybar/scripts/barbox
+interval      = 10
+label         = %output%
+format        = <label>
+click-left    = ~/scripts/barbox --toggle
+tail          = true
+
+
+[module/notibat]
+type          = custom/script
+exec          = ~/.config/polybar/scripts/notibat
+interval      = 2
+
+
+[module/notieye]
+type          = custom/script
+exec          = ~/.config/polybar/scripts/notieye
+interval      = 1200
+
+
+[module/notipose]
+type          = custom/script
+exec          = ~/.config/polybar/scripts/notipose
+interval      = 1800
+
+
+[module/powermenu]
+type                        = custom/menu
+label-open                  = 
+label-open-foreground       = ${colors.highlight}
+label-close                 = 
+label-close-foreground      = ${colors.occupied}
+label-separator             = │
+label-separator-foreground  = ${colors.highlight}
+
+menu-0-0          = Logout
+menu-0-0-exec     = #powermenu.open.1
+menu-0-1          = Reboot
+menu-0-1-exec     = #powermenu.open.2
+menu-0-2          = Shutdown
+menu-0-2-exec     = #powermenu.open.3
+menu-0-3          = ⠀
+
+menu-1-0          = No
+menu-1-0-exec     = #powermenu.open.0
+menu-1-1          = Yes
+menu-1-1-exec     = bspc quit
+meni-1-2          = ⠀
+
+menu-2-0          = No
+menu-2-0-exec     = #powermenu.open.0
+menu-2-1          = Yes
+menu-2-1-exec     = systemctl reboot
+menu-2-2          = ⠀
+
+menu-3-0          = No
+menu-3-0-exec     = #powermenu.open.0
+menu-3-1          = Yes
+menu-3-1-exec     = systemctl poweroff
+menu-3-2          = ⠀

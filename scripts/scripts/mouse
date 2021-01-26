@@ -1,4 +1,0 @@
-#!/usr/bin/env sh
-#█▓▒░  Map button 13 (side button) to button 2 (middle button)
-my_mouse_id=$(xinput | grep "Logitech Performance MX" | sed 's/^.*id=\([0-9]*\)[ \t].*$/\1/')
-xinput set-button-map $my_mouse_id 1 2 3 4 5 6 7 8 9 10 11 12 2 14 15 16
