@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+notify-send -i ~/.config/dunst/images/water.png "Health" "Rehydrate yourself! <br><br>You should have drank 250ml since last notified!" && mpv ~/.config/dunst/sounds/Breeze.mp3 &> /dev/null

@@ -4,7 +4,7 @@ rofi.columns:                        1
 rofi.hide-scrollbar:                 true
 rofi.bw:                             0
 rofi.font:                           Fantasque Sans Mono 12
-rofi.color-normal:                   #191724, #ebbcba, #191724, #1e1c2e, #eb6f92
+rofi.color-normal:                   #191724, #bc9694, #191724, #1e1c2e, #eb6f91
 rofi.color-window:                   #191724, #1e1c2e, #14131f
 rofi.padding:                        25
 rofi.yoffset:                        0

@@ -1,3 +1,3 @@
 #!/usr/bin/env zsh
 
-notify-send -i ~/.config/dunst/images/heart.png "Health" "Look after your eyes! <br><br>Look at something at a distance of 20 feet for a while or take a break!"
+notify-send -i ~/.config/dunst/images/eye.png "Health" "Look after your eyes! <br><br>Look at something at a distance of 20 feet for a while or take a break!" && mpv ~/.config/dunst/sounds/Breeze.mp3 &> /dev/null

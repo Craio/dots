@@ -25,7 +25,7 @@ else
         # Otherwise, check if battery percentage is equal to or lower than the set threshold, if so send
         # a critial notification with image and remaining percentage then create the file /tmp/batteryLowPower
         ((bat <= LOW)) && {
-                notify-send -u critical -i ~/.config/dunst/images/battery-low.png "<Battery ("$bat"%)" "<br><br> Plug in to charge the battery!"
+                notify-send -h string:x-dunst-stack-tag:battery -u critical -i ~/.config/dunst/images/battery-low.png "<Battery ("$bat"%)" "<br><br> Plug in to charge the battery!" && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
                 touch "$BAT_LOW"
         }
 fi
@@ -33,12 +33,12 @@ fi
 
 if [[ -f "$BAT_AC" ]]; then
         grep -q 'Discharging' /sys/class/power_supply/BAT0/status && {
-                notify-send -u critical -i ~/.config/dunst/images/battery-charged.png "<Battery ("$bat"%)" "<br><br> Battery is discharging!"
+                notify-send -h string:x-dunst-stack-tag:battery -u critical -i ~/.config/dunst/images/battery-charged.png "<Battery ("$bat"%)" "<br><br> Battery is discharging!" && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
                 rm -f "$BAT_AC"
         }
 else
         grep -q 'Charging' /sys/class/power_supply/BAT0/status && {
-                notify-send -u critical -i ~/.config/dunst/images/battery-charging.png "<Battery ("$bat"%)" "<br><br> Battery is charging!"
+                notify-send -h string:x-dunst-stack-tag:battery -u critical -i ~/.config/dunst/images/battery-charging.png "<Battery ("$bat"%)" "<br><br> Battery is charging!" && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
                 touch "$BAT_AC"
         }
 fi
@@ -52,7 +52,7 @@ else
         # Otherwise, check if battery percentage is equal to or greater than the set threshold, if so send
         # a critial notification with image and remaining percentage then create the file /tmp/batteryFullPower
         ((bat >= FULL)) && {
-                notify-send -u critical -i ~/.config/dunst/images/battery-full.png "<Battery ("$bat"%)" "<br><br> Battery is fully charged!"
+                notify-send -u critical -i ~/.config/dunst/images/battery-full.png "<Battery ("$bat"%)" "<br><br> Battery is fully charged!" && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
                 touch "$BAT_FULL"
         }
 fi

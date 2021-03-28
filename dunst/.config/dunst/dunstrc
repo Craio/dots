@@ -1,33 +1,33 @@
 [colors]
-	background = "#191724"
-	foreground = "#ebbcba"
+	background 							= "#191724"
+	foreground 							= "#ebbcba"
 
 [global]
     ### Display ###
 
-    monitor = 0
-    follow = mouse
+    monitor 							= 0
+    follow 								= mouse
 
-    geometry = "800x120-40+110"
-		indicate_hidden = yes
-    shrink = yes
-    transparency = 0
-    notification_height = 0
-    separator_height = 3
-    padding = 20
-    horizontal_padding = 20
-    frame_width = 3
+    geometry 							= "600x120-38+38"
+		indicate_hidden 			= yes
+    shrink 								= true
+    transparency 					= 0
+    notification_height	 	= 0
+    separator_height 			= 3
+    padding 							= 20
+    horizontal_padding 		= 20
+    frame_width 					= 4
 
-    frame_color = "#1e1c2e"
-    separator_color = frame
-		separator_height = 2
-    sort = yes
-    idle_threshold = 120
+    frame_color 					= "#1e1c2e"
+    separator_color 			= frame
+		separator_height 			= 2
+    sort 									= yes
+    idle_threshold 				= 120
 
 
     ### Text ###
-    font = Fantasque Sans Mono 12
-    line_height = 0
+    font 									= Fantasque Sans Mono 12
+    line_height						= 0
 
 
     # The format of the message.  Possible variables are:
@@ -39,76 +39,85 @@
     #   %p  progress value if set ([  0%] to [100%]) or nothing
     #   %n  progress value if set without any extra characters
     #   %%  Literal %
-    markup = full
-		format = "<b>%s </b>\n%b"
 
-		alignment = left
-    show_age_threshold = 60
-    word_wrap = yes
-    ellipsize = middle
-    ignore_newline = no
-    stack_duplicates = true
-    hide_duplicate_count = false
-    show_indicators = yes
+    markup 								= full
+		format 								= "<b>%s </b>\n%b"
+
+		alignment 						= left
+    show_age_threshold 		= 60
+    word_wrap 						= yes
+    ellipsize 						= middle
+    ignore_newline 				= no
+    stack_duplicates 			= true
+    hide_duplicate_count 	= false
+    show_indicators 			= yes
 
 
     ### Icons ###
-    icon_position = left
-    max_icon_size = 64
-    icon_path = .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
+    icon_position 				= left
+    max_icon_size 				= 64
+    icon_path 						= .icons/flattrcolor/status/24:.icons/flattrcolor/devices/48:.icons/flattrcolor/apps/scalable:.icons/flattrcolor/actions/scalable
 
 
     ### History ###
-    sticky_history = yes
-    history_length = 20
+    sticky_history 				= yes
+    history_length 				= 20
 
 
     ### Misc/Advanced ###
-    dmenu = /usr/bin/rofi -show run -p dunst:
-    browser = /usr/bin/firefox-nihtly -new-tab
-    always_run_script = true
-    title = Dunst
-    class = Dunst
-    startup_notification = false
+    dmenu 								= /usr/bin/rofi -show run -p dunst:
+    browser 							= /usr/bin/firefox-nightly -new-tab
+    always_run_script 		= true
+    title 								= Dunst
+    class 								= Dunst
+    startup_notification 	= false
 
-		verbosity = mesg
-		corner_radius = 8
+		verbosity 						= mesg
+		corner_radius 				= 15
 
-		mouse_left_click = close_current
-    mouse_middle_click = do_action
-    mouse_right_click = close_all
+		mouse_left_click 			= close_current
+    mouse_middle_click 		= do_action
+    mouse_right_click 		= close_all
 
-    force_xinerama = false
+    force_xinerama 				= false
 
 
 [experimental]
-    per_monitor_dpi = false
+    per_monitor_dpi 			= false
 
 
 [shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    context = ctrl+shift+period
-		history = ctrl+grave
+    close 								= ctrl+space
+    close_all 						= ctrl+shift+space
+    context 							= ctrl+shift+period
+		history 							= ctrl+grave
 
 
 [urgency_low]
-    background = colors.background
-    foreground = colors.foreground
-    timeout = 10
-		icon = ~/.config/dunst/images/notification.png
+    background 						= colors.background
+    foreground 						= colors.foreground
+		frame_color 					= "#26233a"
+    timeout 							= 10
+		icon 									= ~/.config/dunst/images/notification.png
 
 
 [urgency_normal]
-    background = colors.background
-    foreground = colors.foreground
-    timeout = 10
-		icon = ~/.config/dunst/images/notification.png
+    background 						= colors.background
+    foreground 						= colors.foreground
+		frame_color 					= "#9c85b8"
+    timeout 							= 10
+		icon 									= ~/.config/dunst/images/notification.png
 
 
 [urgency_critical]
-    background = colors.background
-    foreground = colors.foreground
-    frame_color = "#eb6f92"
-    timeout = 0
-		icon = ~/.config/dunst/images/notification.png
+    background 						= colors.background
+    foreground 						= colors.foreground
+    frame_color 					= "#eb6f91"
+    timeout 							= 0
+		icon 									= ~/.config/dunst/images/notification.png
+
+[volume]
+		appname 							= Volume
+		geometry 							= "100x120-38+38"
+		urgency 							= low
+		shrink 								= no

@@ -26,16 +26,19 @@ xrandr --output eDP-1 --same-as HDMI-1-0 &
 xsetroot -cursor_name left_ptr &
 
 #█▓▒░  bspwm settings // ० ० ० ० ०
+#monitor
 bspc monitor DP-2 -d एक दो तीन चार पांच
+# laptop
 bspc monitor eDP-1 -d एक दो तीन चार पांच
+# tv
 bspc monitor HDMI-1-0 -d एक दो तीन चार पांच
 bspc config remove_unplugged_monitors true
 bspc config remove_disabled_monitors true
 
 bspc config border_width       	 5
-bspc config window_gap           35
-bspc config top_padding          60
-bspc config bottom_padding       0
+bspc config window_gap           40
+bspc config top_padding          0
+bspc config bottom_padding       60
 bspc config left_padding         0
 bspc config right_padding        0
 bspc config split_ratio          0.50
@@ -44,12 +47,31 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 bspc config focus_follows_pointer true
 
-bspc rule -a firefox-nightly state=tiled
+#	new: add cool rules like this 		`		bspc rule -a firefox:Navigator:HomePage follow=on		`
+#	would apply to firefox windows whose instance is Navigator and window title is "HomePage"
+#	(<class_name>|*)[:(<instance_name>|*)[:(<name>|*)]]
+
+#bspc rule -a "Nightly:Save Image" state=floating
+#bspc rule -a "RuneLite Launcher:*" state=floating
+#bspc rule -a "RuneLite:*" state=tiled
+#bspc rule -a Nightly state=tiled
+g
+bspc rule -a Nightly:Navigator state=tiled
+bspc rule -a Nightly:firefox state=floating
+bspc rule -a Nightly:Toolkit:Picture-in-Picture state=floating
+
+bspc rule -a feh floating=on state=floating
+bspc rule -a mpv floating=on state=floating
+bspc rule -a Cpupower-gui state=floating
+
+bspc rule -a "net-runelite-launcher-Launcher:net-runelite-launcher-Launcher:RuneLite" state=tiled
+bspc rule -a "net-runelite-launcher-Launcher:net-runelite-launcher-Launcher:RuneLite Launcher" state=floating
+bspc rule -a "Steam:Steam:Steam" state=floating
+bspc rule -a "Steam:Steam:Steam Login" state=floating
 
 #█▓▒░  launch programs
 bash "$HOME/.config/wpg/wp_init.sh" &
 bash "$HOME/scripts/bars" &
-
 dropbox &
 picom &
 redshift -l 56:-3 &

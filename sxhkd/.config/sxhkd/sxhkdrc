@@ -1,20 +1,30 @@
 #█▓▒░
 #█▓▒░ WM independent hotkeys
-# Terminal emulator
-super + Return
-	alacritty
+
+# Make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd && dunstify -t 1000 "Sxhkd Reloaded"
 
 # Program launcher.
 super + space
 	rofi -show run
 
-# Make sxhkd reload its configuration files:
-super + Escape
-	pkill -USR1 -x sxhkd
+# Terminal emulator
+super + Return
+	prime-run alacritty
+
+# Launch Nightly
+super + b
+	prime-run firefox-nightly
+
+# Launch cpupower-gui
+super + p
+	cpupower-gui
 
 
 #█▓▒░
 #█▓▒░ bspwm hotkeys
+
 # quit bspwm normally
 super + alt + Escape
 	bspc quit
@@ -22,10 +32,6 @@ super + alt + Escape
 # close and kill
 super + {_,shift + }q
 	bspc node -{c,k}
-
-# alternate between the tiled and monocle layout
-super + m
-	bspc desktop -l next
 
 # set the window state
 super + {t,shift + t,s,f}
@@ -42,6 +48,7 @@ super + ctrl + space
 
 #█▓▒░
 #█▓▒░ Focus / Swap
+
 # Focus the next/previous node in the current desktop
 super + {_,shift + }c
 	bspc node -f {next,prev}.local
@@ -73,30 +80,33 @@ super + minus
 
 #█▓▒░
 #█▓▒░ Extras
+
 # Lock the session.
 super + l
-  bash betterlockscreen -l
+  mpv ~/.config/dunst/sounds/Funky.mp3 &> /dev/null & prime-run betterlockscreen -l && mpv ~/.config/dunst/sounds/Crystal.mp3 &> /dev/null
 
 Print
-	flameshot gui
+	prime-run flameshot gui && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
 
 super + Print
-	scrot '%Y-%m-%d-%T_scrot.png' -e 'mv $f ~/Dropbox/Screenshots/'
+	prime-run flameshot full -p ~/Dropbox/Screenshots/ && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
 
 shift + Print
-	bash ~/scripts/colorpicker
+	bash ~/scripts/colorpicker && mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
 
 #	Reload bspwm
 XF86Tools
 	bash .config/bspwm/bspwmrc
 
+
+
 #	Mute speaker volume
 XF86AudioMute
-	amixer set Master toggle
+	bash ~/.config/dunst/volume mute & mpv ~/.config/dunst/sounds/Pluck.mp3 &> /dev/null
 
 #	Raise/Lower volume settings
 {XF86AudioLowerVolume,XF86AudioRaiseVolume}
-	amixer set Master 5%{-,+} unmute
+	bash ~/.config/dunst/volume {down, up} & mpv ~/.config/dunst/sounds/Pong.mp3 &> /dev/null
 
 #	Mute microphone
 XF86AudioMicMute

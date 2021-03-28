@@ -3,12 +3,12 @@
     "alpha": "100",
 
     "special": {
-        "background": "#0E1D26",
+        "background": "#0a141a",
         "foreground": "#ffdaff",
         "cursor": "#ffdaff"
     },
     "colors": {
-        "color0": "#0E1D26",
+        "color0": "#0a141a",
         "color1": "#AC414B",
         "color2": "#304C4C",
         "color3": "#AD9366",
@@ -16,7 +16,7 @@
         "color5": "#991F50",
         "color6": "#55635F",
         "color7": "#d6a6c4",
-        "color8": "#1b384b",
+        "color8": "#172f3e",
         "color9": "#ef4554",
         "color10": "#366a6a",
         "color11": "#f2c372",

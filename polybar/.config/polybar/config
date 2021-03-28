@@ -1,7 +1,7 @@
 [colors]
 background          = ${xrdb:color0:#191724}
 foreground          = ${xrdb:color7:#ebbcba}
-highlight           = ${xrdb:color9:#eb6f92}
+highlight           = ${xrdb:color9:#eb6f91}
 occupied            = ${xrdb:color5:#c4a7e7}
 unoccupied          = ${xrdb:color8:#26233a}
 
@@ -33,16 +33,18 @@ override-redirect   = true
 dpi                 = 144
 wm-restack          = bspwm
 width               = 100%
-height              = 2.25%
-radius              = 15px
+height              = 3%
+radius              = 0px
 offset-x            = 0%
 offset-y            = 0%
-top                 = true
+bottom              = true
+#top                = true
+
 fixed-center        = true
 background          = ${colors.background}
 foreground          = ${colors.foreground}
-border-size         = 20
-border-color        = #00000000
+#border-size         = 0
+#border-color        = #00000000
 spacing             = 2
 padding-left        = 2
 padding-right       = 2
@@ -55,7 +57,7 @@ font-2              = Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=
 font-3              = Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=11:antialias=true;0
 font-4              = Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=11:antialias=true;0
 
-modules-left        = powermenu bspwm notibat notieye notipose
+modules-left        = powermenu bspwm notibat notieye notipose notiwater
 modules-center      = spotibar
 modules-right       = weather backlight pulseaudio battery network date dropbox
 scroll-up           = bspwm-desknext
@@ -126,7 +128,7 @@ tail                      = true
 type                    = internal/pulseaudio
 sink                    = alsa_output.pci-0000_00_1f.3.analog-stereo
 use-ui-max              = false
-interval                = 5
+interval                = 10
 format-volume           = <ramp-volume><label-volume>
 format-volume-padding   = 2
 ramp-volume-foreground  = ${colors.violet}
@@ -139,13 +141,14 @@ label-volume            = %percentage%%
 label-muted-padding     = 2
 label-muted             =  muted
 label-muted-foreground  = ${colors.red}
+script                  = ~/Donwloads/volume.sh up
 
 
 [module/battery]
 # Use the following command to list batteries and adapters:
 #   $ ls -1 /sys/class/power_supply/
 type                            = internal/battery
-full-at                         = 95
+full-at                         = 99
 battery                         = BAT0
 adapter                         = AC
 poll-interval                   = 1
@@ -175,7 +178,7 @@ animation-charging-framerate    = 500
 #   $ nmcli device status
 type                            = internal/network
 interface                       = wlp0s20f3
-interval                        = 5
+interval                        = 1
 format-connected                = <label-connected>
 format-disconnected             = <label-disconnected>
 label-connected                 = "  "
@@ -201,29 +204,35 @@ label                       = "%date% %time%"
 [module/dropbox]
 type          = custom/script
 exec          = ~/.config/polybar/scripts/barbox
-interval      = 10
+interval      = 5
 label         = %output%
 format        = <label>
-click-left    = ~/scripts/barbox --toggle
+click-left    = ~/.config/polybar/scripts/barbox --toggle
 tail          = true
 
 
 [module/notibat]
 type          = custom/script
 exec          = ~/.config/polybar/scripts/notibat
-interval      = 2
+interval      = 1
 
 
 [module/notieye]
 type          = custom/script
 exec          = ~/.config/polybar/scripts/notieye
-interval      = 1200
+interval      = 1111
 
 
 [module/notipose]
 type          = custom/script
 exec          = ~/.config/polybar/scripts/notipose
-interval      = 1800
+interval      = 1818
+
+
+[module/notiwater]
+type          = custom/script
+exec          = ~/.config/polybar/scripts/notiwater
+interval      = 900
 
 
 [module/powermenu]

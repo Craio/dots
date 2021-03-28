@@ -1,2 +1,2 @@
 #!/bin/bash
-export GDK_SCALE=2; prime-run ./Downloads/RuneLite.AppImage
+export GDK_SCALE=2; prime-run ./Downloads/RuneLite.AppImage --mode=OFF

@@ -1,10 +1,11 @@
 #! /bin/sh
-# Start Autopilot installer. /should/ fully install a complete working environment from a fresh install.
+# Start Autopilot installer. 
+# This /should/ fully install a complete working environment from a fresh install. maybe. 
 set -e
 
 # Keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
-# echo an error message before exiting
+# Echo an error message before exiting
 trap 'echo -e "\n\nProgram failed at \"${last_command}\" command failed with exit code $?. \n\n"' EXIT
 
 # Display instructions
@@ -64,6 +65,16 @@ while true
         # Install wpg icons
         echo -e "\n#█▓▒░	Setting wpg themes "
         wpg-install.sh -i
+        echo -e "#█▓▒░	DONE \n"
+
+        # Install spicetify
+        echo -e "\n#█▓▒░	Setting wpg themes "
+        yay -S spicetify-cli
+        sudo chmod a+wr /opt/spotify
+        sudo chmod a+wr /opt/spotify/Apps -R
+        spicetify
+        spicetify backup apply enable-devtool
+        spicetify update
         echo -e "#█▓▒░	DONE \n"
 
         # Set betterlockscreen wallpaper
